@@ -16,7 +16,7 @@
                 <button onclick="showSection('register')" class="hover:text-orange-400">Εγγραφή</button>
                 <button onclick="showSection('request')" class="hover:text-orange-400">Νέο Αίτημα</button>
                 <button onclick="showSection('my-requests')" class="hover:text-orange-400">Τα Αιτήματά μου</button>
-                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full">Tracking</button>
+                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full shadow transition hover:bg-orange-600">Tracking</button>
             </div>
         </div>
     </nav>
@@ -44,11 +44,11 @@
                     </p>
                     <div class="space-y-2 pt-2 border-t border-blue-200">
                         <label class="flex items-start space-x-3 cursor-pointer">
-                            <input type="checkbox" id="promoConsent" class="mt-1 w-4 h-4 text-blue-600 rounded">
+                            <input type="checkbox" id="promoConsent" checked class="mt-1 w-4 h-4 text-blue-600 rounded">
                             <span class="text-gray-700">Επιτρέπω την αποστολή επιστημονικού υλικού από την <b>Zarkolia Health</b>.</span>
                         </label>
                         <label class="flex items-start space-x-3 cursor-pointer">
-                            <input type="checkbox" id="gdprConsent" class="mt-1 w-4 h-4 text-blue-600 rounded">
+                            <input type="checkbox" id="gdprConsent" checked class="mt-1 w-4 h-4 text-blue-600 rounded">
                             <span class="text-gray-700 font-bold">Συμφωνώ με την επεξεργασία των δεδομένων μου σύμφωνα με τον GDPR.</span>
                         </label>
                     </div>
@@ -57,7 +57,7 @@
             </form>
         </section>
 
-        <section id="request" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border">
+        <section id="request" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
             <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">Νέο Αίτημα Ελλειπτικού</h2>
             <div class="space-y-4">
                 <input type="email" id="reqEmail" placeholder="Το Email σας" class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500 font-bold">
@@ -71,30 +71,30 @@
                     <div class="text-right"><span class="text-[10px] font-black text-green-800">ΛΤ</span><br><span id="dispLT" class="font-bold text-lg text-green-700"></span></div>
                 </div>
                 <input type="number" id="qty" placeholder="Ποσότητα" class="w-full border-2 p-3 rounded-lg outline-none">
-                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg">ΔΗΜΟΣΙΕΥΣΗ ΣΤΟ ΔΙΚΤΥΟ</button>
+                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-green-700 transition">ΔΗΜΟΣΙΕΥΣΗ ΣΤΟ ΔΙΚΤΥΟ</button>
             </div>
         </section>
 
-        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border">
+        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Ιστορικό Αιτημάτων</h2>
             <div class="flex gap-2 mb-6">
-                <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-3 rounded-lg outline-none">
+                <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 <button onclick="fetchMyRequests()" class="bg-blue-900 text-white px-6 rounded-lg font-bold">ΕΛΕΓΧΟΣ</button>
             </div>
             <div id="resultsArea" class="space-y-4"></div>
         </section>
 
-        <section id="tracking" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border">
-            <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4 text-center">Tracking</h2>
+        <section id="tracking" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+            <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">Tracking</h2>
             <input type="text" id="trackReqId" placeholder="ID Αιτήματος" class="w-full border-2 p-3 rounded-lg mb-4 outline-none focus:border-orange-500">
             <input type="text" id="qrcode" placeholder="Serial Number (QR)" class="w-full border-2 p-3 rounded-lg mb-4 outline-none focus:border-orange-500">
-            <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
+            <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-orange-600 transition">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
 
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbw4pxnEX308Xn9RbGqfU9CjHiUXBy6IL6PzwkBWn5YC3KSowf_7Pi2nzBejq8RooieE/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbyP8EXRMdiJbN0cakGVPD_3ZvfbXitC8SapMBijvDEaQLa65-uRm1bpC8HhHjQbMKmy/exec";
         let drugsDatabase = [];
 
         window.addEventListener('DOMContentLoaded', async () => {
@@ -112,15 +112,19 @@
         async function fetchMyRequests() {
             const email = document.getElementById('searchEmail').value.trim();
             const area = document.getElementById('resultsArea');
-            area.innerHTML = "Αναζήτηση...";
+            if(!email) return alert("Βάλτε το email σας");
+            area.innerHTML = "<p class='text-center animate-pulse'>Αναζήτηση...</p>";
             const r = await fetch(APP_URL + "?action=myRequests&email=" + email);
             const data = await r.json();
-            if(data.length === 0) { area.innerHTML = "Δεν βρέθηκαν αιτήματα."; return; }
+            if(data.length === 0) { area.innerHTML = "<p class='text-center'>Δεν βρέθηκαν αιτήματα.</p>"; return; }
             area.innerHTML = data.map(req => `
-                <div class="border-2 p-4 rounded-xl ${req.status === 'Βρέθηκε' ? 'bg-green-50' : 'bg-gray-50'}">
-                    <b>ID: ${req.id}</b> | <span>${req.status}</span><br>
-                    ${req.drug}<br>
-                    ${req.status === 'Βρέθηκε' ? `<div class='text-sm mt-2 text-green-700'><b>Βοηθός:</b> ${req.helperName} (${req.helperEmail})</div>` : ''}
+                <div class="border-2 p-4 rounded-xl shadow-sm ${req.status === 'Βρέθηκε' ? 'bg-green-50 border-green-200' : 'bg-gray-50'}">
+                    <div class="flex justify-between font-bold mb-1">
+                        <span>ID: ${req.id}</span>
+                        <span class="${req.status === 'Βρέθηκε' ? 'text-green-700' : 'text-orange-600'}">${req.status}</span>
+                    </div>
+                    <div>${req.drug}</div>
+                    ${req.status === 'Βρέθηκε' ? `<div class='text-xs mt-3 p-2 bg-white rounded border border-green-100 text-green-800'><b>Βοηθός:</b> ${req.helperName} (${req.helperEmail})</div>` : ''}
                 </div>
             `).reverse().join('');
         }
@@ -131,8 +135,8 @@
             if(d) {
                 document.getElementById('drug').value = d.name;
                 document.getElementById('priceInfo').classList.remove('hidden');
-                document.getElementById('dispXT').innerText = d.xt + "€";
-                document.getElementById('dispLT').innerText = d.lt + "€";
+                document.getElementById('dispXT').innerText = parseFloat(d.xt.replace(',','.')).toFixed(2) + "€";
+                document.getElementById('dispLT').innerText = parseFloat(d.lt.replace(',','.')).toFixed(2) + "€";
             }
         }
 
@@ -141,16 +145,16 @@
             if(d) {
                 document.getElementById('drugBarcode').value = d.barcode;
                 document.getElementById('priceInfo').classList.remove('hidden');
-                document.getElementById('dispXT').innerText = d.xt + "€";
-                document.getElementById('dispLT').innerText = d.lt + "€";
+                document.getElementById('dispXT').innerText = parseFloat(d.xt.replace(',','.')).toFixed(2) + "€";
+                document.getElementById('dispLT').innerText = parseFloat(d.lt.replace(',','.')).toFixed(2) + "€";
             }
         };
 
         async function handleAction(type, btn) {
-            const oldT = btn.innerText; btn.innerText = "Περιμένετε..."; btn.disabled = true;
+            const oldT = btn.innerText; btn.innerText = "Επεξεργασία..."; btn.disabled = true;
             let p = { action: type };
             if(type === 'register') {
-                if(!document.getElementById('gdprConsent').checked) { alert("Αποδεχθείτε τον GDPR"); btn.innerText = oldT; btn.disabled = false; return; }
+                if(!document.getElementById('gdprConsent').checked) { alert("Πρέπει να αποδεχθείτε τον GDPR για την εγγραφή."); btn.innerText = oldT; btn.disabled = false; return; }
                 ['name','afm','email','manager','am','gemi','address','city','zip','mobile','phone'].forEach(f => p[f] = document.getElementById(f).value);
                 p.promoConsent = document.getElementById('promoConsent').checked ? "ΝΑΙ" : "ΟΧΙ";
                 p.gdprConsent = "ΑΠΟΔΟΧΗ";
@@ -159,10 +163,17 @@
                 p.qty = document.getElementById('qty').value;
                 p.drugNameOnly = document.getElementById('drug').value;
                 p.drug = p.drugNameOnly + " (XT: " + document.getElementById('dispXT').innerText + ")";
+                if(!p.requesterEmail || !p.drugNameOnly) { alert("Email και Φάρμακο είναι υποχρεωτικά"); btn.innerText = oldT; btn.disabled = false; return; }
+            } else if(type === 'tracking') {
+                p.reqId = document.getElementById('trackReqId').value;
+                p.qrcode = document.getElementById('qrcode').value;
             }
-            await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
-            alert("Ολοκληρώθηκε!");
-            btn.innerText = oldT; btn.disabled = false;
+            try {
+                await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
+                alert("Η ενέργεια ολοκληρώθηκε επιτυχώς!");
+                if(type === 'register') showSection('request');
+            } catch(e) { alert("Σφάλμα σύνδεσης."); }
+            finally { btn.innerText = oldT; btn.disabled = false; }
         }
     </script>
 </body>
