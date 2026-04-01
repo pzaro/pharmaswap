@@ -29,19 +29,63 @@
 
     <nav class="bg-blue-900 text-white p-4 shadow-xl sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-black italic">MediX</h1>
-            <div class="flex space-x-2 md:space-x-4 text-[10px] md:text-xs font-bold uppercase">
-                <button onclick="showSection('register')" class="hover:text-orange-400">Εγγραφή</button>
-                <button onclick="showSection('request')" class="hover:text-orange-400">Νέο Αίτημα</button>
-                <button onclick="showSection('my-requests')" class="hover:text-orange-400">Ιστορικό</button>
-                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full">Tracking</button>
+            <h1 class="text-2xl font-black italic cursor-pointer" onclick="showSection('home')">MediX</h1>
+            <div class="flex space-x-3 md:space-x-4 text-[9px] md:text-xs font-bold uppercase flex-wrap justify-end">
+                <button onclick="showSection('home')" class="hover:text-orange-400">Αρχικη</button>
+                <button onclick="showSection('register')" class="hover:text-orange-400">Εγγραφη</button>
+                <button onclick="showSection('request')" class="hover:text-orange-400">Νεο Αιτημα</button>
+                <button onclick="showSection('my-requests')" class="hover:text-orange-400">Ιστορικο</button>
+                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full shadow hover:bg-orange-600 transition">Tracking</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 p-4 max-w-3xl mb-20">
+    <div class="container mx-auto mt-8 p-4 max-w-4xl mb-20">
 
-        <section id="register" class="section-content bg-white p-8 rounded-3xl shadow-sm border">
+        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-full font-bold text-xs uppercase tracking-widest mb-4">PharmaSwap Network</div>
+                <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-4 tracking-tight">Το Δίκτυο Αλληλεγγύης του Ελληνικού Φαρμακείου</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Το <b>MediX</b> σχεδιάστηκε για να λύσει το καθημερινό πρόβλημα των ελλείψεων. Είναι μια δωρεάν πλατφόρμα που συνδέει άμεσα τα φαρμακεία, εξοικονομώντας πολύτιμο χρόνο αναζήτησης, ώστε κανένας ασθενής να μην μένει χωρίς τη θεραπεία του.
+                </p>
+            </div>
+
+            <h3 class="text-xl font-black text-gray-800 border-b pb-3 mb-8 flex items-center gap-2"><i class="fas fa-cogs text-blue-500"></i> Πώς λειτουργεί η πλατφόρμα</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-900 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">1</div>
+                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Εγγραφή Φαρμακείου</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Δημιουργείτε το προφίλ σας δωρεάν. Το σύστημα ταυτοποιεί τα φαρμακεία για να διασφαλίσει ένα κλειστό, επαγγελματικό και ασφαλές δίκτυο επικοινωνίας.</p>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-2xl border border-green-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">2</div>
+                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Άμεση Αναζήτηση</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Κάνετε νέο αίτημα σκανάροντας το barcode ή γράφοντας το φάρμακο. Η πλατφόρμα βρίσκει αυτόματα τις τιμές (ΧΤ/ΛΤ) και ειδοποιεί με email όλα τα μέλη του δικτύου.</p>
+                </div>
+
+                <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">3</div>
+                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Αποδοχή & Σύνδεση</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Αν ένας συνάδελφος έχει το απόθεμα, πατάει "Αποδοχή". Το σύστημα ανταλλάσσει αυτόματα τα τηλέφωνα και των δύο φαρμακείων για να επικοινωνήσετε άμεσα.</p>
+                </div>
+
+                <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">4</div>
+                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Ασφάλεια & Tracking</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">Μόλις κανονίσετε την αποστολή, «κλειδώνετε» τη συναλλαγή καταχωρώντας το Serial Number (QR) και το Voucher της μεταφορικής, διασφαλίζοντας πλήρη ιχνηλασιμότητα.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                <p class="text-sm text-blue-900 italic font-medium mb-4">Το MediX είναι μια πρωτοβουλία αλληλεγγύης και παρέχεται εντελώς δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
+                <button onclick="showSection('register')" class="bg-blue-900 text-white px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-lg hover:bg-blue-800 hover:-translate-y-1 transition transform">ΞΕΚΙΝΗΣΤΕ ΕΔΩ</button>
+            </div>
+        </section>
+
+        <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
@@ -73,7 +117,6 @@
                             <span class="text-xs text-gray-700"><b>Συναινώ</b> στην αποστολή επιστημονικού υλικού. <span class="text-gray-400">(Προαιρετικό)</span></span>
                         </label>
                     </div>
-                    <p class="text-[10px] text-gray-400 text-center italic">Παρέχεται δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
                 </div>
                 <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-2xl font-bold shadow-lg mt-2">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
@@ -147,7 +190,6 @@
     </div>
 
     <script>
-        // ⚠️ ΑΝΤΙΚΑΤΑΣΤΗΣΕ ΤΟ URL ΑΠΟ ΚΑΤΩ ΜΕ ΤΟ ΝΕΟ DEPLOYMENT URL ΣΟΥ ⚠️
         const APP_URL = "https://script.google.com/macros/s/AKfycbxb_TGeeXkV3d7EEqn4Ij7ts11TjfUM2Lsj8rg0eS1DR8HPhk5QlAWQOqpLD_jJZVWL/exec";
         
         let drugsDatabase = [];
@@ -165,6 +207,7 @@
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
+            window.scrollTo(0, 0); // Επιστροφή στην κορυφή της σελίδας όταν αλλάζει η καρτέλα
         }
 
         function onDrugInput(val) {
