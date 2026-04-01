@@ -3,134 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmaSwap - Δίκτυο Ανταλλαγής</title>
+    <title>PharmaSwap Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="bg-slate-50 font-sans">
 
-    <nav class="bg-blue-800 text-white p-4 shadow-lg sticky top-0 z-50">
+    <nav class="bg-blue-900 text-white p-4 shadow-xl sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">PharmaSwap</h1>
-            <div class="space-x-4 text-sm">
-                <button onclick="show('reg')">Εγγραφή</button>
-                <button onclick="show('req')">Νέο Αίτημα</button>
-                <button onclick="show('track')" class="bg-orange-500 px-3 py-1 rounded">Tracking</button>
+            <h1 class="text-2xl font-black tracking-tighter italic">PHARMASWAP</h1>
+            <div class="hidden md:flex space-x-6 font-semibold">
+                <button onclick="showSection('register')" class="hover:text-orange-400 transition">Εγγραφή</button>
+                <button onclick="showSection('request')" class="hover:text-orange-400 transition">Νέο Αίτημα</button>
+                <button onclick="showSection('tracking')" class="bg-orange-500 px-4 py-1 rounded-full hover:bg-orange-600">Tracking</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto p-4 max-w-2xl mt-6">
+    <div class="container mx-auto mt-8 p-4 max-w-3xl">
         
-        <div id="reg" class="section bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-2xl font-bold mb-4 text-blue-900 border-b pb-2">Εγγραφή Φαρμακείου</h2>
-            <div class="grid grid-cols-1 gap-3">
-                <input id="name" type="text" placeholder="Επωνυμία Φαρμακείου" class="border p-2 rounded">
-                <input id="email" type="email" placeholder="Email (για ειδοποιήσεις)" class="border p-2 rounded">
-                <input id="manager" type="text" placeholder="Υπεύθυνος Φαρμακοποιός" class="border p-2 rounded">
-                <div class="grid grid-cols-2 gap-2">
-                    <input id="am" type="text" placeholder="ΑΜ Υπεύθυνου (ΤΣΑΥ)" class="border p-2 rounded">
-                    <input id="gemi" type="text" placeholder="ΓΕΜΗ" class="border p-2 rounded">
+        <section id="register" class="section-content bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">
+                <i class="fas fa-user-medical mr-2"></i>Εγγραφή Φαρμακείου στο Δίκτυο
+            </h2>
+            <form id="regForm" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Επωνυμία Φαρμακείου</label>
+                    <input type="text" id="name" required class="w-full border-2 p-3 rounded-lg outline-none">
                 </div>
-                <input id="address" type="text" placeholder="Διεύθυνση" class="border p-2 rounded">
-                <div class="grid grid-cols-2 gap-2">
-                    <input id="city" type="text" placeholder="Πόλη" class="border p-2 rounded">
-                    <input id="zip" type="text" placeholder="ΤΚ" class="border p-2 rounded">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Email (Επίσημο)</label>
+                    <input type="email" id="email" required class="w-full border-2 p-3 rounded-lg outline-none">
                 </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <input id="mobile" type="tel" placeholder="Κινητό Τηλ." class="border p-2 rounded">
-                    <input id="phone" type="tel" placeholder="Σταθερό Τηλ." class="border p-2 rounded">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Υπεύθυνος Φαρμακοποιός</label>
+                    <input type="text" id="manager" required class="w-full border-2 p-3 rounded-lg outline-none">
                 </div>
-                <button onclick="submitReg()" class="mt-4 bg-blue-700 text-white py-3 rounded font-bold hover:bg-blue-800 transition">ΕΓΓΡΑΦΗ ΣΤΟ ΔΙΚΤΥΟ</button>
-            </div>
-        </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ΑΜ Υπεύθυνου (ΤΣΑΥ)</label>
+                    <input type="text" id="am" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ΓΕΜΗ</label>
+                    <input type="text" id="gemi" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Διεύθυνση</label>
+                    <input type="text" id="address" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Πόλη</label>
+                    <input type="text" id="city" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ΤΚ</label>
+                    <input type="text" id="zip" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Κινητό Τηλ.</label>
+                    <input type="tel" id="mobile" required class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Σταθερό Τηλ.</label>
+                    <input type="tel" id="phone" class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+                <button type="button" onclick="handleAction('register')" class="md:col-span-2 bg-blue-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-800 shadow-lg">
+                    ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ
+                </button>
+            </form>
+        </section>
 
-        <div id="req" class="section hidden bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-2xl font-bold mb-4 text-green-800">Αίτημα για Ελλειπτικό</h2>
-            <div class="space-y-4">
-                <input id="reqEmail" type="email" placeholder="Το Email σας (για ταυτοποίηση)" class="border p-3 w-full rounded">
-                <input id="drug" type="text" placeholder="Όνομα Φαρμάκου" class="border p-3 w-full rounded">
-                <input id="qty" type="number" placeholder="Ποσότητα" class="border p-3 w-full rounded">
+        <section id="request" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">
+                <i class="fas fa-search-plus mr-2"></i>Αίτημα Ελλειπτικού Φαρμάκου
+            </h2>
+            <div class="space-y-5">
+                <div class="bg-blue-50 p-4 rounded-lg text-sm text-blue-800 mb-4">
+                    <i class="fas fa-info-circle mr-1"></i> Υποβάλλετε το αίτημα. Μόλις βρεθεί το φάρμακο, θα συνεννοηθείτε με τον συνάδελφο για τον τρόπο αποστολής.
+                </div>
                 
-                <div class="p-3 bg-gray-50 rounded border">
-                    <p class="font-bold mb-2">Τρόπος Παραλαβής:</p>
-                    <label class="block"><input type="radio" name="del" value="pickup"> Παραλαβή από το Φαρμακείο</label>
-                    <label class="block"><input type="radio" name="del" value="courier" checked> Αποστολή με Courier</label>
-                </div>
-
-                <div id="courier-list" class="grid grid-cols-2 gap-2 text-sm p-2">
-                    <label><input type="checkbox" value="ACS"> ACS</label>
-                    <label><input type="checkbox" value="Geniki"> Γενική Ταχ.</label>
-                    <label><input type="checkbox" value="Speedex"> Speedex</label>
-                    <label><input type="checkbox" value="CourierCenter"> Courier Center</label>
-                    <label><input type="checkbox" value="EasyMail"> EasyMail</label>
-                    <label><input type="checkbox" value="ELTA"> ΕΛΤΑ Courier</label>
-                </div>
-                <button onclick="submitReq()" class="w-full bg-green-600 text-white py-4 rounded-lg font-bold">ΔΗΜΟΣΙΕΥΣΗ & EMAIL ΣΕ ΟΛΟΥΣ</button>
-            </div>
-        </div>
-
-        <div id="track" class="section hidden bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-2xl font-bold mb-4 text-orange-700 border-b pb-2">Tracking & QR</h2>
-            <p class="text-sm text-gray-600 mb-4">Καταχωρήστε τα στοιχεία της αποστολής για να κλείσει η συναλλαγή.</p>
-            <div class="space-y-4">
                 <div>
-                    <label class="block text-sm font-bold">QR Code Φαρμάκου (Serial Number)</label>
-                    <input type="text" placeholder="Σκανάρετε ή πληκτρολογήστε τον κωδικό ΕΟΦ" class="border p-3 w-full rounded bg-gray-50">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Το Email σας (για να επικοινωνήσει μαζί σας ο συνάδελφος)</label>
+                    <input type="email" id="reqEmail" placeholder="π.χ. info@pharmacy.gr" class="w-full border-2 p-3 rounded-lg outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold">Αριθμός Voucher Courier</label>
-                    <input type="text" placeholder="Αριθμός φορτωτικής" class="border p-3 w-full rounded bg-gray-50">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Όνομα Φαρμάκου & Περιεκτικότητα</label>
+                    <input type="text" id="drug" placeholder="π.χ. Ozempic 1mg" class="w-full border-2 p-3 rounded-lg outline-none">
                 </div>
-                <button onclick="alert('Τα στοιχεία καταχωρήθηκαν στο σύστημα ιχνηλασιμότητας.')" class="w-full bg-orange-500 text-white py-3 rounded font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ TRACKING</button>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Απαιτούμενη Ποσότητα</label>
+                    <input type="number" id="qty" placeholder="π.χ. 2" class="w-full border-2 p-3 rounded-lg outline-none">
+                </div>
+
+                <button type="button" onclick="handleAction('request')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 shadow-lg">
+                    ΔΗΜΟΣΙΕΥΣΗ & ΑΠΟΣΤΟΛΗ EMAIL
+                </button>
             </div>
-        </div>
+        </section>
+
+        <section id="tracking" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">
+                <i class="fas fa-truck-loading mr-2"></i>Ιχνηλασιμότητα (Tracking)
+            </h2>
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600">
+                    <p>Συμπληρώνεται από τον <strong>αποστολέα</strong> αφού έχει γίνει η συνεννόηση με τον παραλήπτη.</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ID Αιτήματος (Αν υπάρχει)</label>
+                    <input type="text" id="trackReqId" placeholder="π.χ. REQ-12345" class="w-full border-2 p-3 rounded-lg outline-none bg-gray-50">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">QR CODE Φαρμάκου (Serial Number)</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="qrcode" placeholder="Σκανάρετε ή πληκτρολογήστε τον κωδικό" class="w-full border-2 p-3 rounded-lg outline-none bg-gray-50">
+                        <button class="bg-gray-800 text-white px-4 rounded-lg hover:bg-black"><i class="fas fa-qrcode"></i></button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Τρόπος Αποστολής / Courier</label>
+                        <select id="courierSent" class="w-full border-2 p-3 rounded-lg outline-none bg-gray-50">
+                            <option value="Χέρι με Χέρι">Χέρι με Χέρι (Παραλαβή από κατάστημα)</option>
+                            <option value="ACS">ACS Courier</option>
+                            <option value="Geniki">Γενική Ταχυδρομική</option>
+                            <option value="Speedex">Speedex</option>
+                            <option value="ELTA">ΕΛΤΑ Courier</option>
+                            <option value="Άλλο">Άλλη Μεταφορική</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Αριθμός Voucher (Αν στάλθηκε με courier)</label>
+                        <input type="text" id="voucher" placeholder="Αριθμός φορτωτικής" class="w-full border-2 p-3 rounded-lg outline-none bg-gray-50">
+                    </div>
+                </div>
+
+                <button type="button" onclick="handleAction('tracking')" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 shadow-lg">
+                    ΚΛΕΙΔΩΜΑ ΣΥΝΑΛΛΑΓΗΣ
+                </button>
+            </div>
+        </section>
+
     </div>
 
     <script>
-        const URL = "https://script.google.com/macros/s/AKfycbwxwdRdRN0Mt-simrfBUNNH57L2cY6sbXXhMxP5JMFR5C5zP3gEktRrFRPG7wdt5Ki3/exec";
+        // Το URL παραμένει το ίδιο με αυτό που είχες
+        const APP_URL = "https://script.google.com/macros/s/AKfycbyKcEI-DMs-Re893QxW20ouDgNjr0yHrHHCGqw76t-QuFIP72Fn8cBEQiPCMRSvstrW/exec";
 
-        function show(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
         }
 
-        async function submitReg() {
-            const data = {
-                action: "register",
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                manager: document.getElementById('manager').value,
-                am: document.getElementById('am').value,
-                gemi: document.getElementById('gemi').value,
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value,
-                zip: document.getElementById('zip').value,
-                mobile: document.getElementById('mobile').value,
-                phone: document.getElementById('phone').value
-            };
-            await send(data);
-            alert("Η εγγραφή σας υποβλήθηκε!");
-        }
+        async function handleAction(actionType) {
+            const btn = event.target.closest('button');
+            const originalText = btn.innerText;
+            btn.innerText = "Επεξεργασία...";
+            btn.disabled = true;
 
-        async function submitReq() {
-            const data = {
-                action: "request",
-                requesterEmail: document.getElementById('reqEmail').value,
-                drug: document.getElementById('drug').value,
-                qty: document.getElementById('qty').value,
-                delivery: document.querySelector('input[name="del"]:checked').value,
-                couriers: Array.from(document.querySelectorAll('#courier-list input:checked')).map(c => c.value)
-            };
-            await send(data);
-            alert("Το αίτημα στάλθηκε στα email όλων των εγγεγραμμένων φαρμακοποιών!");
-        }
+            let payload = { action: actionType };
 
-        async function send(payload) {
-            return fetch(URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(payload)
-            });
+            if (actionType === 'register') {
+                payload = {
+                    ...payload,
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    manager: document.getElementById('manager').value,
+                    am: document.getElementById('am').value,
+                    gemi: document.getElementById('gemi').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    zip: document.getElementById('zip').value,
+                    mobile: document.getElementById('mobile').value,
+                    phone: document.getElementById('phone').value
+                };
+            } else if (actionType === 'request') {
+                // Το αίτημα τώρα στέλνει μόνο τα βασικά
+                payload = {
+                    ...payload,
+                    requesterEmail: document.getElementById('reqEmail').value,
+                    drug: document.getElementById('drug').value,
+                    qty: document.getElementById('qty').value
+                };
+            } else if (actionType === 'tracking') {
+                // Νέα λειτουργία: Καταγραφή του Tracking
+                payload = {
+                    ...payload,
+                    reqId: document.getElementById('trackReqId').value,
+                    qrcode: document.getElementById('qrcode').value,
+                    courier: document.getElementById('courierSent').value,
+                    voucher: document.getElementById('voucher').value
+                };
+            }
+
+            try {
+                await fetch(APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    body: JSON.stringify(payload)
+                });
+                
+                alert("Η ενέργεια ολοκληρώθηκε επιτυχώς!");
+                
+                // Καθαρισμός πεδίων
+                if(actionType === 'register') showSection('request');
+                if(actionType === 'request') {
+                    document.getElementById('drug').value = '';
+                    document.getElementById('qty').value = '';
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Σφάλμα σύνδεσης.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
