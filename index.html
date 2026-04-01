@@ -20,12 +20,7 @@
             left: 0;
             top: 100%;
         }
-        #drugSuggestions div {
-            padding: 10px 16px;
-            cursor: pointer;
-            font-size: 13px;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        #drugSuggestions div { padding: 10px 16px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
         #drugSuggestions div:hover { background: #f0fdf4; font-weight: bold; }
         .drug-input-wrap { position: relative; }
     </style>
@@ -66,7 +61,7 @@
                         <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Προστασία Προσωπικών Δεδομένων (GDPR)</p>
                         <p class="text-xs text-gray-600 leading-relaxed mb-4">Τα προσωπικά σας δεδομένα συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής. Δεν διαβιβάζονται σε τρίτους, δεν χρησιμοποιούνται για εμπορικούς σκοπούς και τηρούνται σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR).</p>
                         <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
+                            <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
                             <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
                         </label>
                     </div>
@@ -74,7 +69,7 @@
                         <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
                         <p class="text-xs text-gray-600 leading-relaxed mb-4">Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας επιστημονικό/εκπαιδευτικό υλικό.</p>
                         <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0">
+                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0" checked>
                             <span class="text-xs text-gray-700"><b>Συναινώ</b> στην αποστολή επιστημονικού υλικού. <span class="text-gray-400">(Προαιρετικό)</span></span>
                         </label>
                     </div>
@@ -152,18 +147,18 @@
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbxSjOhhi4rj9K_SMWIsS_P1UNc25vJde7cT1U_sdW14rtn5YS2rv-KknSjuj2DtJek0/exec";
+        // ⚠️ ΑΝΤΙΚΑΤΑΣΤΗΣΕ ΤΟ URL ΑΠΟ ΚΑΤΩ ΜΕ ΤΟ ΝΕΟ DEPLOYMENT URL ΣΟΥ (αν δεν είναι το ίδιο)
+        const APP_URL = "https://script.google.com/macros/s/AKfycbzjz1bRnyulV5eJzYTBK0xb0nlRNvkmHqNDRJI_MFU9OTAaKH7dTpQCbA7yDrd1Wprw/exec";
+        
         let drugsDatabase = [];
         let selectedDrug = null;
 
-        // ── Φόρτωση φαρμάκων από Sheet ────────────────────────────────
         window.addEventListener('DOMContentLoaded', async () => {
             try {
                 const resp = await fetch(APP_URL + "?action=getDrugs");
                 drugsDatabase = await resp.json();
-                console.log("✅ Φορτώθηκαν " + drugsDatabase.length + " φάρμακα");
             } catch(err) {
-                console.error("❌ Σφάλμα φόρτωσης φαρμάκων:", err);
+                console.error("Σφάλμα φόρτωσης φαρμάκων:", err);
             }
         });
 
@@ -172,7 +167,6 @@
             document.getElementById(id).classList.remove('hidden');
         }
 
-        // ── Custom Autocomplete ονόματος ──────────────────────────────
         function onDrugInput(val) {
             const box = document.getElementById('drugSuggestions');
             selectedDrug = null;
@@ -209,7 +203,6 @@
             }
         });
 
-        // ── Αναζήτηση με Barcode ──────────────────────────────────────
         function searchByBarcode() {
             const bc = document.getElementById('drugBarcode').value.trim();
             if (!bc) { document.getElementById('priceInfo').classList.add('hidden'); return; }
@@ -223,7 +216,6 @@
             }
         }
 
-        // ── Συμπλήρωση τιμών & barcode ───────────────────────────────
         function fillDrugData(d) {
             document.getElementById('drugBarcode').value = d.barcode;
             document.getElementById('selectedDrugName').innerText = d.name;
@@ -234,7 +226,6 @@
             document.getElementById('priceInfo').classList.remove('hidden');
         }
 
-        // ── Ιστορικό αιτημάτων ────────────────────────────────────────
         async function fetchMyRequests() {
             const email = document.getElementById('searchEmail').value.trim();
             const area = document.getElementById('resultsArea');
@@ -280,20 +271,17 @@
             }
         }
 
-        // ── Κεντρικός handler ─────────────────────────────────────────
         async function handleAction(type, btn) {
-            if (type === 'register') {
-                if (!document.getElementById('gdprConsent').checked) {
-                    alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) για να συνεχίσετε.");
-                    return;
-                }
+            if (type === 'register' && !document.getElementById('gdprConsent').checked) {
+                alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) για να συνεχίσετε.");
+                return;
             }
             if (type === 'request') {
                 if (!document.getElementById('reqEmail').value.trim()) { alert("Συμπληρώστε το email σας."); return; }
                 if (!selectedDrug) { alert("Παρακαλώ επιλέξτε φάρμακο από τη λίστα ή με barcode."); return; }
             }
-            if (type === 'tracking') {
-                if (!document.getElementById('trackReqId').value.trim()) { alert("Συμπληρώστε το ID αιτήματος."); return; }
+            if (type === 'tracking' && !document.getElementById('trackReqId').value.trim()) {
+                alert("Συμπληρώστε το ID αιτήματος."); return;
             }
 
             const oldT = btn.innerText;
