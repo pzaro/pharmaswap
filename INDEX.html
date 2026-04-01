@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSwap - Δίκτυο Ανταλλαγής Φαρμάκων</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-blue-700 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold italic">PharmaSwap</h1>
+            <div class="space-x-4">
+                <button onclick="showSection('register')" class="hover:underline">Εγγραφή</button>
+                <button onclick="showSection('request')" class="hover:underline">Νέο Αίτημα</button>
+                <button onclick="showSection('tracking')" class="bg-white text-blue-700 px-4 py-1 rounded-full font-semibold">Tracking</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-10 p-4 max-w-4xl">
+        
+        <section id="register" class="section-content bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Εγγραφή Φαρμακοποιού</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Όνομα Φαρμακείου" class="border p-3 rounded w-full">
+                <input type="text" placeholder="Αριθμός Αδείας / ΓΕΜΗ" class="border p-3 rounded w-full">
+                <input type="email" placeholder="Email Επικοινωνίας" class="border p-3 rounded w-full">
+                <input type="tel" placeholder="Τηλέφωνο" class="border p-3 rounded w-full">
+                <button type="button" class="md:col-span-2 bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition">Δημιουργία Λογαριασμού</button>
+            </form>
+        </section>
+
+        <section id="request" class="section-content hidden bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">Καταχώρηση Ελλειπτικού Φαρμάκου</h2>
+            <div class="space-y-4">
+                <input type="text" placeholder="Όνομα Φάρμακου (π.χ. Ozempic)" class="border p-3 rounded w-full">
+                <input type="number" placeholder="Ποσότητα Τεμαχίων" class="border p-3 rounded w-full">
+                <select class="border p-3 rounded w-full">
+                    <option>Τιμή Χονδρικής</option>
+                    <option>Τιμή Λιανικής</option>
+                    <option>Ανταλλαγή με άλλο σκεύασμα</option>
+                </select>
+                <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold">Ανάρτηση Αιτήματος</button>
+            </div>
+        </section>
+
+        <section id="tracking" class="section-content hidden bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2 italic">Ολοκλήρωση & Tracking</h2>
+            <div class="bg-blue-50 p-4 rounded-lg mb-6 border-l-4 border-blue-500">
+                <p class="text-sm text-blue-800 font-medium">Εδώ καταχωρείτε τα στοιχεία της αποστολής για την ολοκλήρωση της συναλλαγής.</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-semibold mb-2 text-gray-700">Σάρωση / Καταχώρηση QR Code Φαρμάκου</label>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Εισάγετε τον 12ψήφιο κωδικό ή σκανάρετε" class="border p-3 rounded w-full bg-gray-50">
+                        <button class="bg-gray-800 text-white px-4 rounded hover:bg-black"><i class="fas fa-barcode"></i></button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold mb-2 text-gray-700">Αριθμός Voucher (Μεταφορική)</label>
+                    <input type="text" placeholder="π.χ. 1234567890 (ACS, Speedex, κτλ)" class="border p-3 rounded w-full bg-gray-50">
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <input type="checkbox" id="shipping" class="w-5 h-5">
+                    <label for="shipping" class="text-gray-700">Τα μεταφορικά επιβαρύνουν τον παραλήπτη</label>
+                </div>
+
+                <button onclick="alert('Η συναλλαγή κλειδώθηκε και ιχνηλατείται!')" class="w-full bg-orange-500 text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-orange-600 transition">
+                    ΟΛΟΚΛΗΡΩΣΗ ΣΥΝΑΛΛΑΓΗΣ
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function showSection(id) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            // Show the selected one
+            document.getElementById(id).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
