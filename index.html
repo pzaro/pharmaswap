@@ -29,7 +29,7 @@
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Email</label><input type="email" id="email" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Υπεύθυνος</label><input type="text" id="manager" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Υπεύθυνος Φαρμακοποιός</label><input type="text" id="manager" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΜ (ΤΣΑΥ)</label><input type="text" id="am" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΓΕΜΗ</label><input type="text" id="gemi" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Διεύθυνση</label><input type="text" id="address" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
@@ -38,14 +38,41 @@
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Κινητό</label><input type="tel" id="mobile" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Σταθερό</label><input type="tel" id="phone" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 
-                <div class="md:col-span-2 mt-4 p-5 bg-blue-50 rounded-2xl border border-blue-100 text-sm space-y-4">
-                    <p class="text-blue-900 italic font-medium text-center">Παρέχεται δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
-                    <div class="space-y-2">
-                        <label class="flex items-center space-x-3"><input type="checkbox" id="promoConsent" checked class="w-5 h-5"> <span>Συγκατάθεση Zarkolia Health</span></label>
-                        <label class="flex items-center space-x-3 font-bold"><input type="checkbox" id="gdprConsent" checked class="w-5 h-5"> <span>Αποδοχή GDPR</span></label>
+                <!-- GDPR & CONSENT BLOCK -->
+                <div class="md:col-span-2 mt-4 space-y-4">
+
+                    <!-- GDPR -->
+                    <div class="p-5 bg-gray-50 rounded-2xl border-2 border-gray-200">
+                        <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Προστασία Προσωπικών Δεδομένων (GDPR)</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                            Τα προσωπικά σας δεδομένα (επωνυμία, ΑΦΜ, email, τηλέφωνο, διεύθυνση) συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής αποθεμάτων μεταξύ εγγεγραμμένων φαρμακείων. Τα δεδομένα σας δεν διαβιβάζονται σε τρίτους, δεν χρησιμοποιούνται για εμπορικούς σκοπούς και τηρούνται σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR). Έχετε το δικαίωμα πρόσβασης, διόρθωσης και διαγραφής των δεδομένων σας ανά πάσα στιγμή.
+                        </p>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
+                            <span class="text-xs font-bold text-gray-800">
+                                Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων σύμφωνα με την ανωτέρω ενημέρωση και τον GDPR. <span class="text-red-500">*</span>
+                            </span>
+                        </label>
                     </div>
+
+                    <!-- PROMO CONSENT -->
+                    <div class="p-5 bg-blue-50 rounded-2xl border-2 border-blue-100">
+                        <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                            Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας <b>επιστημονικό και εκπαιδευτικό υλικό</b> σχετικό με φαρμακευτικά σκευάσματα, κλινικές μελέτες και νέα θεραπευτικά πρωτόκολλα, αποκλειστικά για επαγγελματίες υγείας. Η επικοινωνία αυτή γίνεται μέσω email και δεν έχει εμπορικό χαρακτήρα. Μπορείτε να αποσύρετε τη συγκατάθεσή σας ανά πάσα στιγμή.
+                        </p>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0">
+                            <span class="text-xs text-gray-700">
+                                <b>Συναινώ</b> στην αποστολή επιστημονικού / προωθητικού υλικού από την <b>Zarkolia Health</b> στο email μου. <span class="text-gray-400">(Προαιρετικό)</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 text-center italic">Παρέχεται δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
                 </div>
-                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-2xl font-bold shadow-lg">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
+
+                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-2xl font-bold shadow-lg mt-2">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
 
@@ -84,7 +111,7 @@
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycby8NfHk9Id5e_zr35FKWzSea0Uc_tVIVqnumDtvSv9L9sl_eLGHLwzYyCxFh5hrpZai/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbwShiWMJ7Za10TIqHruL6JbWBjWYFCHZ0L6CGAgK50W4iwaT1G2zwv33LCWF_UhhQYD/exec";
         let drugsDatabase = [];
 
         window.addEventListener('DOMContentLoaded', async () => {
@@ -145,6 +172,14 @@
         };
 
         async function handleAction(type, btn) {
+            // Έλεγχος GDPR πριν την εγγραφή
+            if(type === 'register') {
+                if(!document.getElementById('gdprConsent').checked) {
+                    alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) για να συνεχίσετε.");
+                    return;
+                }
+            }
+
             const oldT = btn.innerText; btn.innerText = "Περιμένετε..."; btn.disabled = true;
             let p = { action: type };
             if(type === 'register') {
