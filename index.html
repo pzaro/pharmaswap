@@ -29,39 +29,43 @@
             <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="md:col-span-2">
                     <label class="block text-sm font-bold text-gray-700 mb-1">Επωνυμία Φαρμακείου</label>
-                    <input type="text" id="name" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="name" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ΑΦΜ Φαρμακείου</label>
+                    <input type="text" id="afm" placeholder="9 ψηφία" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Email (Επίσημο)</label>
-                    <input type="email" id="email" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="email" id="email" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Υπεύθυνος Φαρμακοποιός</label>
-                    <input type="text" id="manager" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="manager" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">ΑΜ Υπεύθυνου (ΤΣΑΥ)</label>
-                    <input type="text" id="am" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="am" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
-                <div>
+                <div class="md:col-span-2">
                     <label class="block text-sm font-bold text-gray-700 mb-1">ΓΕΜΗ</label>
-                    <input type="text" id="gemi" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="gemi" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-bold text-gray-700 mb-1">Διεύθυνση</label>
-                    <input type="text" id="address" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="address" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Πόλη</label>
-                    <input type="text" id="city" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="city" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">ΤΚ</label>
-                    <input type="text" id="zip" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="text" id="zip" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Κινητό Τηλ.</label>
-                    <input type="tel" id="mobile" required class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
+                    <input type="tel" id="mobile" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Σταθερό Τηλ.</label>
@@ -152,7 +156,7 @@
 
     <script>
         // Το URL του Google Apps Script Web App
-        const APP_URL = "https://script.google.com/macros/s/AKfycbyoc7lmk7kqN7SFDS2BYyRVMq97MixMHtHHrwq41It7jQAI63fZHhmCTgNGmV6btgTS/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbwa3fmfmPkjm8e0iMW7l4iwktSDl1bKDL4i8c7oxcCqQbFhk8g94PHtgKRArnRVQY9_/exec";
 
         // Εναλλαγή μεταξύ των οθονών
         function showSection(id) {
@@ -171,6 +175,7 @@
             // Συγκέντρωση δεδομένων ανάλογα με τη φόρμα
             if (actionType === 'register') {
                 payload.name = document.getElementById('name').value;
+                payload.afm = document.getElementById('afm').value;
                 payload.email = document.getElementById('email').value;
                 payload.manager = document.getElementById('manager').value;
                 payload.am = document.getElementById('am').value;
@@ -180,6 +185,13 @@
                 payload.zip = document.getElementById('zip').value;
                 payload.mobile = document.getElementById('mobile').value;
                 payload.phone = document.getElementById('phone').value;
+                
+                if(!payload.name || !payload.afm || !payload.email) {
+                    alert("Επωνυμία, ΑΦΜ και Email είναι υποχρεωτικά!");
+                    btnElement.innerText = originalText;
+                    btnElement.disabled = false;
+                    return;
+                }
             } else if (actionType === 'request') {
                 payload.requesterEmail = document.getElementById('reqEmail').value;
                 payload.drug = document.getElementById('drug').value;
