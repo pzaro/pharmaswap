@@ -6,6 +6,29 @@
     <title>MediX - PharmaSwap Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        #drugSuggestions {
+            position: absolute;
+            z-index: 1000;
+            background: white;
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            max-height: 220px;
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            width: 100%;
+            left: 0;
+            top: 100%;
+        }
+        #drugSuggestions div {
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        #drugSuggestions div:hover { background: #f0fdf4; font-weight: bold; }
+        .drug-input-wrap { position: relative; }
+    </style>
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
@@ -22,7 +45,7 @@
     </nav>
 
     <div class="container mx-auto mt-8 p-4 max-w-3xl mb-20">
-        
+
         <section id="register" class="section-content bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -37,41 +60,26 @@
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΤΚ</label><input type="text" id="zip" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Κινητό</label><input type="tel" id="mobile" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Σταθερό</label><input type="tel" id="phone" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                
-                <!-- GDPR & CONSENT BLOCK -->
-                <div class="md:col-span-2 mt-4 space-y-4">
 
-                    <!-- GDPR -->
+                <div class="md:col-span-2 mt-4 space-y-4">
                     <div class="p-5 bg-gray-50 rounded-2xl border-2 border-gray-200">
                         <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Προστασία Προσωπικών Δεδομένων (GDPR)</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                            Τα προσωπικά σας δεδομένα (επωνυμία, ΑΦΜ, email, τηλέφωνο, διεύθυνση) συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής αποθεμάτων μεταξύ εγγεγραμμένων φαρμακείων. Τα δεδομένα σας δεν διαβιβάζονται σε τρίτους, δεν χρησιμοποιούνται για εμπορικούς σκοπούς και τηρούνται σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR). Έχετε το δικαίωμα πρόσβασης, διόρθωσης και διαγραφής των δεδομένων σας ανά πάσα στιγμή.
-                        </p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Τα προσωπικά σας δεδομένα συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής. Δεν διαβιβάζονται σε τρίτους, δεν χρησιμοποιούνται για εμπορικούς σκοπούς και τηρούνται σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR).</p>
                         <label class="flex items-start gap-3 cursor-pointer">
                             <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
-                            <span class="text-xs font-bold text-gray-800">
-                                Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων σύμφωνα με την ανωτέρω ενημέρωση και τον GDPR. <span class="text-red-500">*</span>
-                            </span>
+                            <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
                         </label>
                     </div>
-
-                    <!-- PROMO CONSENT -->
                     <div class="p-5 bg-blue-50 rounded-2xl border-2 border-blue-100">
                         <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                            Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας <b>επιστημονικό και εκπαιδευτικό υλικό</b> σχετικό με φαρμακευτικά σκευάσματα, κλινικές μελέτες και νέα θεραπευτικά πρωτόκολλα, αποκλειστικά για επαγγελματίες υγείας. Η επικοινωνία αυτή γίνεται μέσω email και δεν έχει εμπορικό χαρακτήρα. Μπορείτε να αποσύρετε τη συγκατάθεσή σας ανά πάσα στιγμή.
-                        </p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας επιστημονικό/εκπαιδευτικό υλικό.</p>
                         <label class="flex items-start gap-3 cursor-pointer">
                             <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0">
-                            <span class="text-xs text-gray-700">
-                                <b>Συναινώ</b> στην αποστολή επιστημονικού / προωθητικού υλικού από την <b>Zarkolia Health</b> στο email μου. <span class="text-gray-400">(Προαιρετικό)</span>
-                            </span>
+                            <span class="text-xs text-gray-700"><b>Συναινώ</b> στην αποστολή επιστημονικού υλικού. <span class="text-gray-400">(Προαιρετικό)</span></span>
                         </label>
                     </div>
-
                     <p class="text-[10px] text-gray-400 text-center italic">Παρέχεται δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
                 </div>
-
                 <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-2xl font-bold shadow-lg mt-2">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
@@ -79,24 +87,57 @@
         <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">Υποβολή Αιτήματος</h2>
             <div class="space-y-4">
-                <input type="email" id="reqEmail" placeholder="Το Email εγγραφής σας" class="w-full border-2 p-4 rounded-xl outline-none focus:border-green-500 font-bold bg-green-50/30">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <input type="text" id="drugBarcode" oninput="searchByBarcode()" placeholder="Barcode" class="border-2 p-4 rounded-xl bg-green-50 font-black text-center outline-none">
-                    <input type="text" id="drug" list="drugList" placeholder="Όνομα Φαρμάκου" class="md:col-span-2 border-2 p-4 rounded-xl font-bold outline-none"><datalist id="drugList"></datalist>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Email Εγγραφής</label>
+                    <input type="email" id="reqEmail" placeholder="Το Email εγγραφής σας" class="w-full border-2 p-4 rounded-xl outline-none focus:border-green-500 font-bold bg-green-50/30">
                 </div>
-                <div id="priceInfo" class="hidden p-5 bg-blue-50 border-2 border-blue-100 rounded-2xl flex justify-between">
-                    <div><span class="text-[10px] font-bold text-blue-800 uppercase">ΧΤ</span><br><span id="dispXT" class="font-bold text-xl"></span></div>
-                    <div class="text-right border-l-2 border-blue-100 pl-4"><span class="text-[10px] font-bold text-green-800 uppercase">ΛΤ</span><br><span id="dispLT" class="font-bold text-xl text-green-700"></span></div>
+
+                <div>
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Barcode (Scanner ή χειροκίνητα)</label>
+                    <input type="text" id="drugBarcode" placeholder="Σκανάρετε ή πληκτρολογήστε barcode"
+                        class="w-full border-2 p-4 rounded-xl bg-green-50 font-black text-center outline-none focus:border-green-500"
+                        oninput="searchByBarcode()">
                 </div>
-                <input type="number" id="qty" value="1" class="w-full border-2 p-4 rounded-xl text-center font-bold">
-                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold shadow-lg">ΔΗΜΟΣΙΕΥΣΗ</button>
+
+                <div>
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Όνομα Φαρμάκου</label>
+                    <div class="drug-input-wrap">
+                        <input type="text" id="drug" placeholder="Πληκτρολογήστε τουλάχιστον 2 χαρακτήρες..."
+                            autocomplete="off"
+                            class="w-full border-2 p-4 rounded-xl font-bold outline-none focus:border-green-500"
+                            oninput="onDrugInput(this.value)">
+                        <div id="drugSuggestions" class="hidden"></div>
+                    </div>
+                </div>
+
+                <div id="priceInfo" class="hidden p-5 bg-blue-50 border-2 border-blue-200 rounded-2xl">
+                    <div class="text-center text-xs font-bold text-gray-500 italic mb-3" id="selectedDrugName"></div>
+                    <div class="flex justify-around">
+                        <div class="text-center">
+                            <span class="text-[10px] font-bold text-blue-800 uppercase block mb-1">Χονδρική (ΧΤ)</span>
+                            <span id="dispXT" class="font-black text-2xl text-blue-900"></span>
+                        </div>
+                        <div class="border-l-2 border-blue-200"></div>
+                        <div class="text-center">
+                            <span class="text-[10px] font-bold text-green-800 uppercase block mb-1">Λιανική (ΛΤ)</span>
+                            <span id="dispLT" class="font-black text-2xl text-green-700"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Ποσότητα</label>
+                    <input type="number" id="qty" value="1" min="1" class="w-full border-2 p-4 rounded-xl text-center font-bold outline-none focus:border-green-500">
+                </div>
+
+                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold shadow-lg">ΔΗΜΟΣΙΕΥΣΗ ΑΙΤΗΜΑΤΟΣ</button>
             </div>
         </section>
 
         <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Τα Αιτήματά μου</h2>
             <div class="flex gap-2 mb-6">
-                <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-4 rounded-xl outline-none">
+                <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-4 rounded-xl outline-none focus:border-blue-500">
                 <button onclick="fetchMyRequests()" class="bg-blue-900 text-white px-8 rounded-xl font-bold">ΕΛΕΓΧΟΣ</button>
             </div>
             <div id="resultsArea" class="space-y-4"></div>
@@ -104,104 +145,201 @@
 
         <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center">
             <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">Tracking</h2>
-            <input type="text" id="trackReqId" placeholder="ID Αιτήματος" class="w-full border-2 p-4 rounded-xl mb-4 outline-none focus:border-orange-500 font-bold text-center">
-            <input type="text" id="qrcode" placeholder="Serial Number (QR)" class="w-full border-2 p-4 rounded-xl mb-4 text-center">
+            <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345)" class="w-full border-2 p-4 rounded-xl mb-4 outline-none focus:border-orange-500 font-bold text-center">
+            <input type="text" id="qrcode" placeholder="Serial Number / Voucher Μεταφορικής" class="w-full border-2 p-4 rounded-xl mb-4 text-center outline-none focus:border-orange-500">
             <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwShiWMJ7Za10TIqHruL6JbWBjWYFCHZ0L6CGAgK50W4iwaT1G2zwv33LCWF_UhhQYD/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbwFGM6xMYTahpIwVWC7Jkcxo4nE06PC4KJMjSvRQ5yfR5883o4mOyEwWwSAY_r5RBHh/exec";
         let drugsDatabase = [];
+        let selectedDrug = null;
 
+        // ── Φόρτωση φαρμάκων από Sheet ────────────────────────────────
         window.addEventListener('DOMContentLoaded', async () => {
-            const resp = await fetch(APP_URL + "?action=getDrugs");
-            drugsDatabase = await resp.json();
-            const dl = document.getElementById('drugList');
-            drugsDatabase.forEach(d => { let opt = document.createElement('option'); opt.value = d.name; dl.appendChild(opt); });
+            try {
+                const resp = await fetch(APP_URL + "?action=getDrugs");
+                drugsDatabase = await resp.json();
+                console.log("✅ Φορτώθηκαν " + drugsDatabase.length + " φάρμακα");
+            } catch(err) {
+                console.error("❌ Σφάλμα φόρτωσης φαρμάκων:", err);
+            }
         });
 
-        function showSection(id) { 
-            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden')); 
-            document.getElementById(id).classList.remove('hidden'); 
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
         }
 
+        // ── Custom Autocomplete ονόματος ──────────────────────────────
+        function onDrugInput(val) {
+            const box = document.getElementById('drugSuggestions');
+            selectedDrug = null;
+            document.getElementById('priceInfo').classList.add('hidden');
+            if (val.length < 2) { box.classList.add('hidden'); return; }
+
+            const q = val.toLowerCase();
+            const matches = drugsDatabase.filter(d => d.name.toLowerCase().includes(q)).slice(0, 40);
+
+            if (matches.length === 0) { box.classList.add('hidden'); return; }
+
+            box.innerHTML = matches.map((d, i) =>
+                `<div onmousedown="selectDrug(event, '${d.barcode}')">
+                    <span class="font-bold">${d.name}</span>
+                    <span class="text-gray-400 text-xs ml-2">ΧΤ: ${d.xt} €</span>
+                </div>`
+            ).join('');
+            box.classList.remove('hidden');
+        }
+
+        function selectDrug(e, barcode) {
+            e.preventDefault(); 
+            const d = drugsDatabase.find(x => String(x.barcode) === String(barcode));
+            if (!d) return;
+            selectedDrug = d;
+            document.getElementById('drug').value = d.name;
+            document.getElementById('drugSuggestions').classList.add('hidden');
+            fillDrugData(d);
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.drug-input-wrap')) {
+                document.getElementById('drugSuggestions').classList.add('hidden');
+            }
+        });
+
+        // ── Αναζήτηση με Barcode ──────────────────────────────────────
+        function searchByBarcode() {
+            const bc = document.getElementById('drugBarcode').value.trim();
+            if (!bc) { document.getElementById('priceInfo').classList.add('hidden'); return; }
+            const d = drugsDatabase.find(x => String(x.barcode).trim() === bc);
+            if (d) {
+                selectedDrug = d;
+                document.getElementById('drug').value = d.name;
+                fillDrugData(d);
+            } else {
+                document.getElementById('priceInfo').classList.add('hidden');
+            }
+        }
+
+        // ── Συμπλήρωση τιμών & barcode ───────────────────────────────
+        function fillDrugData(d) {
+            document.getElementById('drugBarcode').value = d.barcode;
+            document.getElementById('selectedDrugName').innerText = d.name;
+            const xt = parseFloat(String(d.xt).replace(',','.')).toFixed(2);
+            const lt = parseFloat(String(d.lt).replace(',','.')).toFixed(2);
+            document.getElementById('dispXT').innerText = xt + " €";
+            document.getElementById('dispLT').innerText = lt + " €";
+            document.getElementById('priceInfo').classList.remove('hidden');
+        }
+
+        // ── Ιστορικό αιτημάτων ────────────────────────────────────────
         async function fetchMyRequests() {
             const email = document.getElementById('searchEmail').value.trim();
             const area = document.getElementById('resultsArea');
-            if(!email) return alert("Βάλτε το email σας");
-            area.innerHTML = "<p class='text-center animate-pulse'>Αναζήτηση...</p>";
-            const r = await fetch(APP_URL + "?action=myRequests&email=" + email);
-            const data = await r.json();
-            if(data.length === 0) { area.innerHTML = "Δεν βρέθηκαν αιτήματα."; return; }
-            area.innerHTML = data.map(req => `
-                <div class="border-2 p-5 rounded-3xl ${req.status === 'Βρέθηκε' ? 'bg-green-50 border-green-200' : 'bg-gray-50'}">
-                    <div class="flex justify-between font-bold mb-2 italic"><span>ID: ${req.id}</span><span>${req.status}</span></div>
-                    <div class="text-lg font-bold">${req.drug}</div>
-                    ${req.status === 'Βρέθηκε' ? `
-                        <div class="mt-4 p-4 bg-white rounded-2xl border border-green-100 shadow-sm text-sm">
-                            <p class="text-green-800 font-bold mb-3 italic tracking-tight"><i class="fas fa-id-card mr-2"></i>ΣΤΟΙΧΕΙΑ ΣΥΝΑΔΕΛΦΟΥ ΠΟΥ ΣΑΣ ΚΑΛΥΠΤΕΙ:</p>
-                            <div class="space-y-1 text-gray-700">
-                                <p class="flex justify-between"><span>Φαρμακείο:</span> <b class="text-gray-900">${req.helperName}</b></p>
-                                <p class="flex justify-between"><span>Τηλέφωνο:</span> <b class="text-blue-700 text-lg">${req.helperPhone}</b></p>
-                                <p class="flex justify-between"><span>Email:</span> <b class="text-gray-600">${req.helperEmail}</b></p>
-                            </div>
-                            <a href="tel:${req.helperPhone}" class="mt-4 block text-center bg-blue-900 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg">Καλέστε Τώρα</a>
-                        </div>` : ''}
-                </div>`).reverse().join('');
+            if (!email) { alert("Βάλτε το email σας"); return; }
+            area.innerHTML = "<p class='text-center text-gray-400 animate-pulse py-6'>⏳ Αναζήτηση...</p>";
+            try {
+                const r = await fetch(APP_URL + "?action=myRequests&email=" + encodeURIComponent(email));
+                const data = await r.json();
+                if (data.length === 0) {
+                    area.innerHTML = "<p class='text-center text-gray-400 py-6'>Δεν βρέθηκαν αιτήματα.</p>";
+                    return;
+                }
+                area.innerHTML = data.reverse().map(req => `
+                    <div class="border-2 p-5 rounded-3xl ${req.status === 'Βρέθηκε' ? 'bg-green-50 border-green-300' : 'bg-gray-50 border-gray-200'}">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-gray-500">ID: <b class="text-gray-800">${req.id}</b></span>
+                            <span class="text-xs px-3 py-1 rounded-full font-bold ${req.status === 'Βρέθηκε' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-700'}">
+                                ${req.status === 'Βρέθηκε' ? '✅ ' : '⏳ '}${req.status}
+                            </span>
+                        </div>
+                        <div class="text-lg font-bold text-gray-900 mb-2">${req.drug}</div>
+                        ${req.status === 'Βρέθηκε' ? `
+                            <div class="mt-3 p-4 bg-white rounded-2xl border border-green-200 shadow-sm">
+                                <p class="text-green-800 font-black text-xs uppercase mb-3 flex items-center gap-2">
+                                    <i class="fas fa-id-card"></i> ΣΤΟΙΧΕΙΑ ΣΥΝΑΔΕΛΦΟΥ ΠΟΥ ΣΑΣ ΚΑΛΥΠΤΕΙ
+                                </p>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between border-b pb-1"><span class="text-gray-500">Φαρμακείο:</span><b class="text-gray-900">${req.helperName || '—'}</b></div>
+                                    <div class="flex justify-between border-b pb-1"><span class="text-gray-500">Τηλέφωνο:</span><b class="text-blue-700 text-base">${req.helperPhone || '—'}</b></div>
+                                    <div class="flex justify-between"><span class="text-gray-500">Email:</span><b class="text-gray-600">${req.helperEmail || '—'}</b></div>
+                                </div>
+                                ${req.helperPhone ? `
+                                <a href="tel:${req.helperPhone}" class="mt-4 flex items-center justify-center gap-2 bg-blue-900 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest shadow">
+                                    <i class="fas fa-phone"></i> Καλέστε Τώρα
+                                </a>` : ''}
+                            </div>` : `
+                            <p class="text-xs text-orange-600 mt-1 flex items-center gap-1">
+                                <i class="fas fa-clock"></i> Αναμονή αποδοχής από συνάδελφο...
+                            </p>`}
+                    </div>`).join('');
+            } catch(err) {
+                area.innerHTML = "<p class='text-red-500 text-center py-4'>❌ Σφάλμα σύνδεσης. Δοκιμάστε ξανά.</p>";
+            }
         }
 
-        function fillDrugData(d) {
-            document.getElementById('drugBarcode').value = d.barcode;
-            document.getElementById('drug').value = d.name;
-            document.getElementById('priceInfo').classList.remove('hidden');
-            let xtVal = String(d.xt).replace(',','.'); let ltVal = String(d.lt).replace(',','.');
-            document.getElementById('dispXT').innerText = parseFloat(xtVal).toFixed(2) + "€";
-            document.getElementById('dispLT').innerText = parseFloat(ltVal).toFixed(2) + "€";
-        }
-
-        function searchByBarcode() {
-            const bc = document.getElementById('drugBarcode').value.trim();
-            const d = drugsDatabase.find(x => x.barcode == bc);
-            if(d) fillDrugData(d); else document.getElementById('priceInfo').classList.add('hidden');
-        }
-
-        document.getElementById('drug').oninput = function() {
-            const d = drugsDatabase.find(x => x.name === this.value.trim());
-            if(d) fillDrugData(d); else { document.getElementById('priceInfo').classList.add('hidden'); document.getElementById('drugBarcode').value = ''; }
-        };
-
+        // ── Κεντρικός handler ─────────────────────────────────────────
         async function handleAction(type, btn) {
-            // Έλεγχος GDPR πριν την εγγραφή
-            if(type === 'register') {
-                if(!document.getElementById('gdprConsent').checked) {
+            if (type === 'register') {
+                if (!document.getElementById('gdprConsent').checked) {
                     alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) για να συνεχίσετε.");
                     return;
                 }
             }
+            if (type === 'request') {
+                if (!document.getElementById('reqEmail').value.trim()) { alert("Συμπληρώστε το email σας."); return; }
+                if (!selectedDrug) { alert("Παρακαλώ επιλέξτε φάρμακο από τη λίστα ή με barcode."); return; }
+            }
+            if (type === 'tracking') {
+                if (!document.getElementById('trackReqId').value.trim()) { alert("Συμπληρώστε το ID αιτήματος."); return; }
+            }
 
-            const oldT = btn.innerText; btn.innerText = "Περιμένετε..."; btn.disabled = true;
+            const oldT = btn.innerText;
+            btn.innerText = "Περιμένετε...";
+            btn.disabled = true;
+
             let p = { action: type };
-            if(type === 'register') {
-                ['name','afm','email','manager','am','gemi','address','city','zip','mobile','phone'].forEach(f => p[f] = document.getElementById(f).value);
+            if (type === 'register') {
+                ['name','afm','email','manager','am','gemi','address','city','zip','mobile','phone'].forEach(f => p[f] = document.getElementById(f).value.trim());
                 p.promoConsent = document.getElementById('promoConsent').checked ? "ΝΑΙ" : "ΟΧΙ";
                 p.gdprConsent = "ΑΠΟΔΟΧΗ";
-            } else if(type === 'request') {
-                p.requesterEmail = document.getElementById('reqEmail').value;
+            } else if (type === 'request') {
+                const xt = document.getElementById('dispXT').innerText;
+                p.requesterEmail = document.getElementById('reqEmail').value.trim();
                 p.qty = document.getElementById('qty').value;
-                p.drugNameOnly = document.getElementById('drug').value;
-                p.drug = p.drugNameOnly + " (XT: " + document.getElementById('dispXT').innerText + ")";
-            } else if(type === 'tracking') { 
-                p.reqId = document.getElementById('trackReqId').value; 
-                p.qrcode = document.getElementById('qrcode').value; 
+                p.drugNameOnly = selectedDrug.name;
+                p.drug = selectedDrug.name + " (XT: " + xt + ")";
+            } else if (type === 'tracking') {
+                p.reqId = document.getElementById('trackReqId').value.trim();
+                p.qrcode = document.getElementById('qrcode').value.trim();
             }
 
             try {
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
-                alert("Ολοκληρώθηκε!");
-                if(type === 'register') showSection('request');
-            } catch(e) { console.error(e); }
-            finally { btn.innerText = oldT; btn.disabled = false; }
+                if (type === 'register') {
+                    alert("✅ Εγγραφή ολοκληρώθηκε!");
+                    showSection('request');
+                } else if (type === 'request') {
+                    alert("✅ Το αίτημα δημοσιεύτηκε! Όλα τα εγγεγραμμένα φαρμακεία ειδοποιήθηκαν.");
+                    selectedDrug = null;
+                    document.getElementById('drug').value = '';
+                    document.getElementById('drugBarcode').value = '';
+                    document.getElementById('priceInfo').classList.add('hidden');
+                    document.getElementById('qty').value = 1;
+                } else if (type === 'tracking') {
+                    alert("✅ Το tracking καταχωρήθηκε επιτυχώς!");
+                    document.getElementById('trackReqId').value = '';
+                    document.getElementById('qrcode').value = '';
+                }
+            } catch(err) {
+                alert("❌ Σφάλμα σύνδεσης. Δοκιμάστε ξανά.");
+                console.error(err);
+            } finally {
+                btn.innerText = oldT;
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
