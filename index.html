@@ -84,7 +84,7 @@
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwShiWMJ7Za10TIqHruL6JbWBjWYFCHZ0L6CGAgK50W4iwaT1G2zwv33LCWF_UhhQYD/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycby8NfHk9Id5e_zr35FKWzSea0Uc_tVIVqnumDtvSv9L9sl_eLGHLwzYyCxFh5hrpZai/exec";
         let drugsDatabase = [];
 
         window.addEventListener('DOMContentLoaded', async () => {
@@ -156,7 +156,10 @@
                 p.qty = document.getElementById('qty').value;
                 p.drugNameOnly = document.getElementById('drug').value;
                 p.drug = p.drugNameOnly + " (XT: " + document.getElementById('dispXT').innerText + ")";
-            } else if(type === 'tracking') { p.reqId = document.getElementById('trackReqId').value; p.qrcode = document.getElementById('qrcode').value; }
+            } else if(type === 'tracking') { 
+                p.reqId = document.getElementById('trackReqId').value; 
+                p.qrcode = document.getElementById('qrcode').value; 
+            }
 
             try {
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
