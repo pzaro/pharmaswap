@@ -23,148 +23,144 @@
     <div class="container mx-auto mt-8 p-4 max-w-3xl">
         
         <section id="register" class="section-content bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">
-                <i class="fas fa-user-medical mr-2"></i>Εγγραφή Φαρμακείου στο Δίκτυο
-            </h2>
+            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-user-medical mr-2"></i>Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Επωνυμία Φαρμακείου</label>
-                    <input type="text" id="name" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ΑΦΜ Φαρμακείου</label>
-                    <input type="text" id="afm" placeholder="9 ψηφία" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Email (Επίσημο)</label>
-                    <input type="email" id="email" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Υπεύθυνος Φαρμακοποιός</label>
-                    <input type="text" id="manager" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ΑΜ Υπεύθυνου (ΤΣΑΥ)</label>
-                    <input type="text" id="am" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ΓΕΜΗ</label>
-                    <input type="text" id="gemi" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Διεύθυνση</label>
-                    <input type="text" id="address" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Πόλη</label>
-                    <input type="text" id="city" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ΤΚ</label>
-                    <input type="text" id="zip" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Κινητό Τηλ.</label>
-                    <input type="tel" id="mobile" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Σταθερό Τηλ.</label>
-                    <input type="tel" id="phone" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500">
-                </div>
-                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-800 shadow-lg transition">
-                    ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ
-                </button>
+                <div class="md:col-span-2"><label class="block text-sm font-bold text-gray-700 mb-1">Επωνυμία Φαρμακείου</label><input type="text" id="name" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">ΑΦΜ</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Email</label><input type="email" id="email" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Υπεύθυνος</label><input type="text" id="manager" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">ΑΜ (ΤΣΑΥ)</label><input type="text" id="am" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div class="md:col-span-2"><label class="block text-sm font-bold text-gray-700 mb-1">ΓΕΜΗ</label><input type="text" id="gemi" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div class="md:col-span-2"><label class="block text-sm font-bold text-gray-700 mb-1">Διεύθυνση</label><input type="text" id="address" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Πόλη</label><input type="text" id="city" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">ΤΚ</label><input type="text" id="zip" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Κινητό</label><input type="tel" id="mobile" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">Σταθερό</label><input type="tel" id="phone" class="w-full border-2 p-3 rounded-lg outline-none focus:border-blue-500"></div>
+                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-700 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-800 shadow-lg">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
 
         <section id="request" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">
-                <i class="fas fa-search-plus mr-2"></i>Αίτημα Ελλειπτικού Φαρμάκου
-            </h2>
+            <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4"><i class="fas fa-search-plus mr-2"></i>Αίτημα & Ανταλλαγή Φαρμάκου</h2>
             <div class="space-y-5">
-                <div class="bg-blue-50 p-4 rounded-lg text-sm text-blue-800 mb-4 border border-blue-100">
-                    <i class="fas fa-info-circle mr-1"></i> Υποβάλλετε το αίτημα. Μόλις βρεθεί το φάρμακο, θα συνεννοηθείτε με τον συνάδελφο για τον τρόπο αποστολής.
-                </div>
                 
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Το Email σας (για να επικοινωνήσει μαζί σας ο συνάδελφος)</label>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Το Email σας</label>
                     <input type="email" id="reqEmail" placeholder="π.χ. info@pharmacy.gr" class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500">
                 </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Όνομα Φαρμάκου & Περιεκτικότητα</label>
-                    <input type="text" id="drug" placeholder="π.χ. Ozempic 1mg" class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Barcode Φαρμάκου</label>
+                        <input type="text" id="drugBarcode" oninput="searchByBarcode()" placeholder="Σκανάρετε..." class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500 bg-green-50 font-bold tracking-widest">
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Όνομα Φαρμάκου</label>
+                        <input type="text" id="drug" list="drugList" placeholder="Πληκτρολογήστε όνομα..." class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500 font-bold">
+                        <datalist id="drugList"></datalist>
+                    </div>
                 </div>
+
+                <div id="priceInfo" class="hidden mt-2 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl flex justify-between items-center shadow-inner">
+                    <div class="flex items-center">
+                        <i class="fas fa-euro-sign text-blue-400 text-2xl mr-3"></i>
+                        <div>
+                            <span class="text-xs text-blue-800 uppercase font-black tracking-wider">Χονδρική (ΧΤ)</span><br>
+                            <span id="dispXT" class="font-bold text-xl text-blue-900"></span>
+                        </div>
+                    </div>
+                    <div class="text-right border-l-2 border-blue-200 pl-4">
+                        <span class="text-xs text-green-700 uppercase font-black tracking-wider">Λιανική (ΛΤ)</span><br>
+                        <span id="dispLT" class="font-bold text-xl text-green-800"></span>
+                    </div>
+                </div>
+
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Απαιτούμενη Ποσότητα</label>
                     <input type="number" id="qty" placeholder="π.χ. 2" class="w-full border-2 p-3 rounded-lg outline-none focus:border-green-500">
                 </div>
 
-                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 shadow-lg transition">
-                    ΔΗΜΟΣΙΕΥΣΗ & ΑΠΟΣΤΟΛΗ EMAIL
-                </button>
+                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 shadow-lg">ΔΗΜΟΣΙΕΥΣΗ ΑΙΤΗΜΑΤΟΣ</button>
             </div>
         </section>
 
         <section id="tracking" class="section-content hidden bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">
-                <i class="fas fa-truck-loading mr-2"></i>Ιχνηλασιμότητα (Tracking)
-            </h2>
+            <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4"><i class="fas fa-truck-loading mr-2"></i>Ιχνηλασιμότητα (Tracking)</h2>
             <div class="space-y-6">
-                <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 border border-gray-200">
-                    <p><i class="fas fa-exclamation-triangle mr-1 text-orange-500"></i> Συμπληρώνεται από τον <strong>αποστολέα</strong> αφού έχει γίνει η συνεννόηση με τον παραλήπτη.</p>
+                <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345)" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
+                <div class="flex gap-2">
+                    <input type="text" id="qrcode" placeholder="QR CODE (Serial Number)" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
+                    <button class="bg-gray-800 text-white px-5 rounded-lg hover:bg-black transition"><i class="fas fa-qrcode text-xl"></i></button>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ID Αιτήματος</label>
-                    <input type="text" id="trackReqId" placeholder="π.χ. REQ-12345 (Βρίσκεται στο email)" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">QR CODE Φαρμάκου (Serial Number)</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="qrcode" placeholder="Σκανάρετε ή πληκτρολογήστε τον κωδικό του ΕΟΦ" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
-                        <button class="bg-gray-800 text-white px-5 rounded-lg hover:bg-black transition"><i class="fas fa-qrcode text-xl"></i></button>
-                    </div>
-                </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Τρόπος Αποστολής / Courier</label>
-                        <select id="courierSent" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
-                            <option value="Χέρι με Χέρι">Χέρι με Χέρι (Παραλαβή από κατάστημα)</option>
-                            <option value="ACS">ACS Courier</option>
-                            <option value="Geniki">Γενική Ταχυδρομική</option>
-                            <option value="Speedex">Speedex</option>
-                            <option value="CourierCenter">Courier Center</option>
-                            <option value="ELTA">ΕΛΤΑ Courier</option>
-                            <option value="Άλλο">Άλλη Μεταφορική</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Αριθμός Voucher (Φορτωτική)</label>
-                        <input type="text" id="voucher" placeholder="Αριθμός φορτωτικής courier" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
-                    </div>
+                    <select id="courierSent" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
+                        <option value="Χέρι με Χέρι">Χέρι με Χέρι</option>
+                        <option value="ACS">ACS</option>
+                        <option value="Geniki">Γενική Ταχ.</option>
+                        <option value="Speedex">Speedex</option>
+                        <option value="CourierCenter">Courier Center</option>
+                        <option value="ELTA">ΕΛΤΑ</option>
+                    </select>
+                    <input type="text" id="voucher" placeholder="Αριθμός Voucher" class="w-full border-2 p-3 rounded-lg outline-none focus:border-orange-500 bg-gray-50">
                 </div>
-
-                <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 shadow-lg transition">
-                    ΚΛΕΙΔΩΜΑ ΣΥΝΑΛΛΑΓΗΣ
-                </button>
+                <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-600 shadow-lg">ΚΛΕΙΔΩΜΑ ΣΥΝΑΛΛΑΓΗΣ</button>
             </div>
         </section>
 
     </div>
 
     <script>
-        // Το URL του Google Apps Script Web App
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwa3fmfmPkjm8e0iMW7l4iwktSDl1bKDL4i8c7oxcCqQbFhk8g94PHtgKRArnRVQY9_/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbxRUacOytZk2v4-vj4gcHDfDpxMySu3wYl1TZX9Bawz4A80jNJVD2YoztFCnJKV2J_u/exec";
+        let drugsDatabase = [];
 
-        // Εναλλαγή μεταξύ των οθονών
+        // Φόρτωση λίστας φαρμάκων & τιμών
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch(APP_URL + "?action=getDrugs");
+                drugsDatabase = await response.json();
+                
+                const dataList = document.getElementById('drugList');
+                drugsDatabase.forEach(drug => {
+                    let option = document.createElement('option');
+                    option.value = drug.name;
+                    dataList.appendChild(option);
+                });
+            } catch (error) { console.error("Σφάλμα λήψης φαρμάκων."); }
+        });
+
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
         }
 
-        // Κεντρική συνάρτηση για αποστολή δεδομένων
+        // Λειτουργία Εμφάνισης Τιμών
+        function showPrices(drug) {
+            document.getElementById('priceInfo').classList.remove('hidden');
+            document.getElementById('dispXT').innerText = drug.xt ? parseFloat(drug.xt.replace(',','.')).toFixed(2) + '€' : '-';
+            document.getElementById('dispLT').innerText = drug.lt ? parseFloat(drug.lt.replace(',','.')).toFixed(2) + '€' : '-';
+        }
+        function hidePrices() { document.getElementById('priceInfo').classList.add('hidden'); }
+
+        // Αναζήτηση με Barcode
+        function searchByBarcode() {
+            const inputBarcode = document.getElementById('drugBarcode').value.trim();
+            const foundDrug = drugsDatabase.find(d => d.barcode == inputBarcode);
+            if (foundDrug) {
+                document.getElementById('drug').value = foundDrug.name;
+                showPrices(foundDrug);
+            } else hidePrices();
+        }
+
+        // Αναζήτηση με Όνομα (Autocomplete)
+        document.getElementById('drug').addEventListener('input', function() {
+            const inputName = this.value;
+            const foundDrug = drugsDatabase.find(d => d.name === inputName);
+            if(foundDrug) showPrices(foundDrug);
+            else hidePrices();
+        });
+
+        // Κεντρική Αποστολή
         async function handleAction(actionType, btnElement) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "Επεξεργασία...";
@@ -172,7 +168,6 @@
 
             let payload = { action: actionType };
 
-            // Συγκέντρωση δεδομένων ανάλογα με τη φόρμα
             if (actionType === 'register') {
                 payload.name = document.getElementById('name').value;
                 payload.afm = document.getElementById('afm').value;
@@ -185,67 +180,36 @@
                 payload.zip = document.getElementById('zip').value;
                 payload.mobile = document.getElementById('mobile').value;
                 payload.phone = document.getElementById('phone').value;
-                
-                if(!payload.name || !payload.afm || !payload.email) {
-                    alert("Επωνυμία, ΑΦΜ και Email είναι υποχρεωτικά!");
-                    btnElement.innerText = originalText;
-                    btnElement.disabled = false;
-                    return;
-                }
             } else if (actionType === 'request') {
                 payload.requesterEmail = document.getElementById('reqEmail').value;
-                payload.drug = document.getElementById('drug').value;
                 payload.qty = document.getElementById('qty').value;
                 
-                if(!payload.requesterEmail || !payload.drug) {
-                    alert("Το Email και το Όνομα Φαρμάκου είναι υποχρεωτικά!");
-                    btnElement.innerText = originalText;
-                    btnElement.disabled = false;
-                    return;
+                // Δημιουργία τελικού κειμένου με ενσωματωμένες τις τιμές (για το Excel & το Email)
+                let finalDrugText = document.getElementById('drug').value;
+                if(!document.getElementById('priceInfo').classList.contains('hidden')) {
+                    const xt = document.getElementById('dispXT').innerText;
+                    const lt = document.getElementById('dispLT').innerText;
+                    finalDrugText += ` [Αξία Ανταλλαγής - ΧΤ: ${xt} | ΛΤ: ${lt}]`;
+                }
+                payload.drug = finalDrugText;
+                
+                if(!payload.requesterEmail || !document.getElementById('drug').value) {
+                    alert("Email και Φάρμακο υποχρεωτικά!");
+                    btnElement.innerText = originalText; btnElement.disabled = false; return;
                 }
             } else if (actionType === 'tracking') {
                 payload.reqId = document.getElementById('trackReqId').value;
                 payload.qrcode = document.getElementById('qrcode').value;
                 payload.courier = document.getElementById('courierSent').value;
                 payload.voucher = document.getElementById('voucher').value;
-                
-                if(!payload.qrcode) {
-                    alert("Το QR Code του φαρμάκου είναι υποχρεωτικό για την ιχνηλασιμότητα!");
-                    btnElement.innerText = originalText;
-                    btnElement.disabled = false;
-                    return;
-                }
             }
 
-            // Αποστολή στο Google Script
             try {
-                await fetch(APP_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // Απαραίτητο για το Google Apps Script
-                    cache: 'no-cache',
-                    body: JSON.stringify(payload)
-                });
-                
+                await fetch(APP_URL, { method: 'POST', mode: 'no-cors', cache: 'no-cache', body: JSON.stringify(payload) });
                 alert("Η ενέργεια καταχωρήθηκε επιτυχώς!");
-                
-                // Καθαρισμός πεδίων μετά την επιτυχία
-                if(actionType === 'register') {
-                    showSection('request');
-                } else if(actionType === 'request') {
-                    document.getElementById('drug').value = '';
-                    document.getElementById('qty').value = '';
-                } else if(actionType === 'tracking') {
-                    document.getElementById('qrcode').value = '';
-                    document.getElementById('voucher').value = '';
-                }
-            } catch (error) {
-                console.error("Fetch Error:", error);
-                alert("Υπήρξε πρόβλημα σύνδεσης. Παρακαλώ δοκιμάστε ξανά.");
-            } finally {
-                // Επαναφορά κουμπιού
-                btnElement.innerText = originalText;
-                btnElement.disabled = false;
-            }
+                if(actionType === 'register') showSection('request');
+            } catch (error) { alert("Σφάλμα σύνδεσης."); } 
+            finally { btnElement.innerText = originalText; btnElement.disabled = false; }
         }
     </script>
 </body>
