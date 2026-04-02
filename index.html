@@ -3,170 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediX v50.0</title>
+    <title>MediX - PharmaSwap Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         #drugSuggestions { position: absolute; z-index: 1000; background: white; border: 2px solid #16a34a; width: 100%; border-radius: 12px; max-height: 200px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         #drugSuggestions div { padding: 10px; cursor: pointer; border-bottom: 1px solid #eee; }
-        #drugSuggestions div:hover { background: #f0fdf4; }
+        #drugSuggestions div:hover { background: #f0fdf4; color: #16a34a; font-weight: bold; }
+        .drug-input-wrap { position: relative; }
     </style>
 </head>
-<body class="bg-slate-50 flex flex-col min-h-screen text-gray-800">
+<body class="bg-slate-50 flex flex-col min-h-screen text-gray-800 font-sans">
 
     <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto flex justify-between items-center text-[10px] md:text-xs font-bold uppercase">
             <h1 class="text-xl italic font-black cursor-pointer" onclick="showSection('home')">MediX</h1>
             <div class="flex space-x-3 flex-wrap justify-end">
-                <button onclick="showSection('register')">Εγγραφη</button>
-                <button onclick="showSection('profile')" class="text-yellow-300">Προφιλ</button>
-                <button onclick="openRequest('Αναζήτηση')" class="text-green-300">Αναζητηση</button>
-                <button onclick="openRequest('Διάθεση')" class="text-orange-300">Διαθεση</button>
-                <button onclick="showSection('my-requests')">Ιστορικο</button>
+                <button onclick="showSection('register')" class="hover:text-blue-300 transition">Εγγραφη</button>
+                <button onclick="showSection('profile')" class="text-yellow-300 hover:text-yellow-100 transition">Προφιλ</button>
+                <button onclick="openRequest('Αναζήτηση')" class="text-green-300 hover:text-green-100 transition">Αναζητηση</button>
+                <button onclick="openRequest('Διάθεση')" class="text-orange-300 hover:text-orange-100 transition">Διαθεση</button>
+                <button onclick="showSection('my-requests')" class="hover:text-blue-300 transition">Ιστορικο</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto p-4 max-w-4xl flex-grow mt-6">
+    <div class="container mx-auto p-4 max-w-4xl flex-grow mt-6 mb-10">
+
+        <section id="home" class="section-content bg-white p-10 rounded-3xl shadow-sm border text-center">
+            <div class="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-full font-bold text-xs uppercase tracking-widest mb-4">PharmaSwap Network</div>
+            <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-4 tracking-tight">Το Δίκτυο Αλληλεγγύης του Ελληνικού Φαρμακείου</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">Η δωρεάν πλατφόρμα που συνδέει άμεσα τα φαρμακεία για την κάλυψη ελλείψεων.</p>
+            <button onclick="showSection('register')" class="bg-blue-900 text-white px-10 py-4 rounded-xl font-bold shadow-lg hover:-translate-y-1 transition uppercase tracking-widest text-sm">Ξεκινηστε την Εγγραφη</button>
+        </section>
 
         <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
-            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή & Ομάδα</h2>
+            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-user-plus mr-2"></i>Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="md:col-span-2"><input type="text" id="name" placeholder="Επωνυμία Φαρμακείου" class="w-full border p-3 rounded-xl bg-gray-50"></div>
-                <input type="email" id="email" placeholder="Email" class="border p-3 rounded-xl bg-gray-50">
-                <select id="group" class="border p-3 rounded-xl bg-yellow-50 font-bold">
-                    <option value="ΟΛΟΙ">Δημόσια Ομάδα (ΟΛΟΙ)</option>
-                    <option value="ΑΤΤΙΚΗ">Ομάδα Αττικής</option>
-                    <option value="ΒΟΡΕΙΑ ΕΛΛΑΔΑ">Ομάδα Β. Ελλάδας</option>
-                    <option value="ΙΔΙΩΤΙΚΗ ΟΜΑΔΑ 1">Ιδιωτική Ομάδα 1</option>
-                </select>
-                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-black">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
+                <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία Φαρμακείου</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Email Επικοινωνίας</label><input type="email" id="email" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
+                
+                <div class="md:col-span-2 bg-blue-50 p-4 rounded-xl border border-blue-100">
+                    <label class="text-xs font-black text-blue-900 uppercase block mb-2"><i class="fas fa-users mr-1"></i>Ομάδα Συνεργασίας</label>
+                    <p class="text-xs text-gray-500 mb-2">Επιλέξτε την ομάδα που ανήκετε ή δημιουργήστε μια νέα για την περιοχή/δίκτυό σας.</p>
+                    <select id="groupSelect" class="w-full border-2 p-3 rounded-xl font-bold bg-white outline-none focus:border-blue-500" onchange="toggleNewGroup('groupSelect', 'newGroupWrap')">
+                        <option value="ΟΛΟΙ">Φόρτωση ομάδων...</option>
+                    </select>
+                    <div id="newGroupWrap" class="hidden mt-3">
+                        <input type="text" id="newGroupInput" placeholder="Γράψτε το όνομα της νέας ομάδας (π.χ. ΚΥΨΕΛΗ)..." class="w-full border-2 border-yellow-400 p-3 rounded-xl font-bold bg-white outline-none focus:border-yellow-500">
+                    </div>
+                </div>
+
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Υπεύθυνος Φαρμακοποιός</label><input type="text" id="manager" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Φαρμακευτικός Σύλλογος</label>
+                    <select id="association" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50">
+                        <option value="">Επιλέξτε Σύλλογο...</option><option value="Αθηνών">Αθηνών</option><option value="Θεσσαλονίκης">Θεσσαλονίκης</option><option value="Πειραιώς">Πειραιώς</option><option value="Άλλος">Άλλος...</option>
+                    </select>
+                </div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΜ (ΤΣΑΥ)</label><input type="text" id="am" class="w-full border-2 p-3 rounded-xl bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΓΕΜΗ</label><input type="text" id="gemi" class="w-full border-2 p-3 rounded-xl bg-gray-50"></div>
+                <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Διεύθυνση</label><input type="text" id="address" class="w-full border-2 p-3 rounded-xl bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Πόλη & ΤΚ</label>
+                    <div class="flex gap-2"><input type="text" id="city" placeholder="Πόλη" class="w-2/3 border-2 p-3 rounded-xl bg-gray-50"><input type="text" id="zip" placeholder="ΤΚ" class="w-1/3 border-2 p-3 rounded-xl bg-gray-50"></div>
+                </div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Τηλέφωνα (Ορατά στο δίκτυο)</label>
+                    <div class="flex gap-2"><input type="tel" id="mobile" placeholder="Κινητό" class="w-1/2 border-2 p-3 rounded-xl bg-gray-50"><input type="tel" id="phone" placeholder="Σταθερό" class="w-1/2 border-2 p-3 rounded-xl bg-gray-50"></div>
+                </div>
+
+                <div class="md:col-span-2 p-5 bg-blue-50 rounded-2xl border-2 border-blue-100 mt-4">
+                    <label class="flex items-start gap-3 cursor-pointer mb-3"><input type="checkbox" id="gdprConsent" class="w-5 h-5 accent-blue-700"><span class="text-xs font-bold text-blue-900">Αποδέχομαι το GDPR και τους <a href="#" onclick="loadTerms(); return false;" class="underline">Όρους Χρήσης</a>.</span></label>
+                    <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" id="promoConsent" class="w-5 h-5 accent-blue-700"><span class="text-xs text-blue-800">Συναινώ στην αποστολή επιστημονικού υλικού.</span></label>
+                </div>
+                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-black shadow-lg mt-2 uppercase">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
 
         <section id="profile" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
-            <h2 class="text-2xl font-bold mb-4 text-blue-900">Το Προφίλ μου</h2>
-            <input type="email" id="profileEmailSearch" placeholder="Email για αναζήτηση..." class="w-full border p-4 rounded-xl mb-4">
-            <button onclick="loadProfile()" class="w-full bg-yellow-500 text-white py-3 rounded-xl font-bold">ΕΜΦΑΝΙΣΗ & ΔΙΟΡΘΩΣΗ</button>
+            <h2 class="text-2xl font-bold mb-6 text-yellow-600 border-b pb-4"><i class="fas fa-user-edit mr-2"></i>Το Προφίλ μου</h2>
+            <div id="profileSearch" class="text-center space-y-4 bg-gray-50 p-8 rounded-2xl border-2 border-dashed border-gray-300">
+                <input type="email" id="profileEmailSearch" placeholder="Εισάγετε το email εγγραφής..." class="w-full md:w-2/3 border-2 p-4 rounded-xl text-center font-bold">
+                <button onclick="loadProfile()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold w-full md:w-2/3 mt-4 transition shadow">ΕΜΦΑΝΙΣΗ</button>
+            </div>
+            
             <div id="profileEditForm" class="hidden mt-6 space-y-4">
-                <input type="text" id="edit_name" class="w-full border p-3 rounded-xl">
-                <select id="edit_group" class="w-full border p-3 rounded-xl bg-yellow-50 font-bold">
-                    <option value="ΟΛΟΙ">ΟΛΟΙ</option><option value="ΑΤΤΙΚΗ">ΑΤΤΙΚΗ</option><option value="ΒΟΡΕΙΑ ΕΛΛΑΔΑ">ΒΟΡΕΙΑ ΕΛΛΑΔΑ</option>
-                </select>
-                <button onclick="updateProfile(this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold">ΑΠΟΘΗΚΕΥΣΗ</button>
+                <input type="hidden" id="oldEmail">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400">Επωνυμία</label><input type="text" id="edit_name" class="w-full border-2 p-3 rounded-xl bg-white"></div>
+                    <div><label class="text-[10px] font-bold text-gray-400">Email</label><input type="email" id="edit_email" class="w-full border-2 p-3 rounded-xl bg-white"></div>
+                    <div><label class="text-[10px] font-bold text-gray-400">Κινητό</label><input type="tel" id="edit_mobile" class="w-full border-2 p-3 rounded-xl bg-white"></div>
+                    
+                    <div class="md:col-span-2 bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                        <label class="text-xs font-black text-yellow-800 uppercase block mb-2">Αλλαγή Ομάδας Συνεργασίας</label>
+                        <select id="edit_groupSelect" class="w-full border-2 p-3 rounded-xl font-bold bg-white" onchange="toggleNewGroup('edit_groupSelect', 'edit_newGroupWrap')"></select>
+                        <div id="edit_newGroupWrap" class="hidden mt-3">
+                            <input type="text" id="edit_newGroupInput" placeholder="Όνομα νέας ομάδας..." class="w-full border-2 border-yellow-400 p-3 rounded-xl font-bold bg-white">
+                        </div>
+                    </div>
+                    </div>
+                <button onclick="updateProfile(this)" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl font-black shadow-lg uppercase mt-4">ΑΠΟΘΗΚΕΥΣΗ</button>
             </div>
         </section>
 
         <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
-            <h2 id="reqTitle" class="text-2xl font-bold mb-6 border-b pb-4">Νέο Αίτημα</h2>
-            <div class="space-y-4">
-                <input type="email" id="reqEmail" placeholder="Το Email σας" class="w-full border p-4 rounded-xl font-bold bg-gray-50">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-blue-50 p-4 rounded-2xl">
-                    <div>
-                        <label class="text-[10px] font-bold uppercase text-gray-500">Προς Ομάδα:</label>
-                        <select id="targetGroup" class="w-full border p-2 rounded-lg font-bold">
-                            <option value="ΟΛΟΙ">ΟΛΟΥΣ (Δημόσια)</option>
-                            <option value="ΑΤΤΙΚΗ">Μόνο ΑΤΤΙΚΗ</option>
-                            <option value="ΒΟΡΕΙΑ ΕΛΛΑΔΑ">Μόνο Β. ΕΛΛΑΔΑ</option>
-                        </select>
+            <h2 id="reqTitle" class="text-2xl font-bold mb-6 border-b pb-4">...</h2>
+            <div class="space-y-6">
+                <input type="email" id="reqEmail" placeholder="Το Email εγγραφής σας" class="w-full border-2 p-4 rounded-xl bg-gray-50 font-bold">
+                
+                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                    <label class="text-xs font-black text-blue-900 uppercase block mb-2"><i class="fas fa-bullseye mr-1"></i>Αποστολή προς:</label>
+                    <select id="targetGroup" class="w-full border-2 p-3 rounded-xl font-bold bg-white outline-none focus:border-blue-500"></select>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-2xl border-2 border-gray-100 relative">
+                    <h3 class="font-black text-gray-700 text-sm uppercase mb-4"><i class="fas fa-pills text-green-600 mr-1"></i> Επιλογή Φαρμάκων</h3>
+                    <div class="drug-input-wrap mb-4">
+                        <input type="text" id="drug" placeholder="Όνομα φαρμάκου (τουλ. 2 χαρακτήρες)..." class="w-full border-2 p-4 rounded-xl font-bold bg-white" oninput="onDrugInput(this.value)">
+                        <div id="drugSuggestions" class="hidden"></div>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <label class="text-xs font-bold text-gray-500 uppercase">Τεμάχια:</label>
+                        <input type="number" id="qty" value="1" min="1" class="w-24 border-2 p-3 rounded-xl text-center font-bold bg-white">
+                        <button type="button" onclick="addToCart()" class="flex-1 bg-blue-100 hover:bg-blue-200 text-blue-900 py-3 rounded-xl font-bold uppercase text-xs transition border border-blue-200"><i class="fas fa-plus mr-1"></i> Προσθήκη</button>
                     </div>
                 </div>
-                <div class="relative">
-                    <input type="text" id="drug" placeholder="Όνομα φαρμάκου..." class="w-full border p-4 rounded-xl outline-none" oninput="onDrugInput(this.value)">
-                    <div id="drugSuggestions" class="hidden"></div>
-                </div>
-                <div class="flex gap-2">
-                    <input type="number" id="qty" value="1" class="w-24 border p-4 rounded-xl text-center font-bold">
-                    <button onclick="addToCart()" class="flex-1 bg-blue-100 text-blue-900 font-bold rounded-xl">+ Προσθήκη</button>
-                </div>
-                <div id="cartArea" class="hidden bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300">
+
+                <div id="cartArea" class="hidden bg-white border-2 border-green-300 rounded-2xl p-4 shadow-sm">
+                    <h3 class="text-xs font-black text-green-800 uppercase mb-3 border-b border-green-100 pb-2"><i class="fas fa-list-ol mr-1"></i> Λίστα προς δημοσίευση</h3>
                     <div id="cartItems" class="space-y-2"></div>
                 </div>
-                <button id="submitBtn" onclick="handleAction('request', this)" class="w-full text-white py-5 rounded-xl font-black shadow-lg uppercase tracking-widest"></button>
+
+                <button id="submitBtn" onclick="handleAction('request', this)" class="w-full text-white py-5 rounded-xl font-black shadow-lg uppercase tracking-widest transition text-lg"></button>
             </div>
+        </section>
+
+        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
+            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-history mr-2"></i>Τα Αιτήματά μου</h2>
+            <div class="flex gap-2 mb-6">
+                <input type="email" id="searchEmail" placeholder="Εισάγετε το Email σας" class="flex-1 border-2 p-4 rounded-xl">
+                <button onclick="fetchMyRequests()" class="bg-blue-900 text-white px-8 rounded-xl font-bold">ΕΛΕΓΧΟΣ</button>
+            </div>
+            <div id="resultsArea" class="space-y-4"></div>
+        </section>
+
+        <section id="terms" class="section-content hidden bg-white p-10 rounded-3xl shadow-sm border text-sm leading-relaxed text-gray-700">
+            <div id="termsContainer"><p class="text-center text-blue-900 font-bold animate-pulse">⏳ Φόρτωση όρων χρήσης...</p></div>
         </section>
 
     </div>
 
+    <footer class="mt-auto border-t p-6 text-center bg-white">
+        <p class="text-[10px] text-gray-500 font-bold">&copy; 2026 MediX.</p>
+        <button onclick="loadTerms()" class="text-blue-600 text-[10px] underline mt-1 font-bold">Όροι Χρήσης & GDPR</button>
+    </footer>
+
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbzGPZliVDNamtM6vV8O9OICdSxXZgyo_D78hi1z38HdOBzBYbfzq5TuyQT-marqoEwx/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbw0Yqk1XmHD9GUDSBfhbmDBNeCq4FnidmxuvfuRI6Nwgov-7Dvs9DnVREzJ2W0OQ895/exec";
+        
         let drugsDatabase = [];
+        let activeGroups = [];
         let selectedDrug = null;
-        let requestCart = [];
+        let requestCart = []; 
         let currentType = 'Αναζήτηση';
 
         window.addEventListener('DOMContentLoaded', async () => {
-            const resp = await fetch(APP_URL + "?action=getDrugs");
-            drugsDatabase = await resp.json();
+            try {
+                // Παράλληλη φόρτωση φαρμάκων και δυναμικών ομάδων
+                const [respDrugs, respGroups] = await Promise.all([
+                    fetch(APP_URL + "?action=getDrugs"),
+                    fetch(APP_URL + "?action=getGroups")
+                ]);
+                drugsDatabase = await respDrugs.json();
+                activeGroups = await respGroups.json();
+                populateGroupDropdowns();
+            } catch(err) { console.error("Error loading data"); }
         });
 
-        function openRequest(type) {
-            currentType = type;
-            showSection('request');
-            document.getElementById('reqTitle').innerText = type === 'Διάθεση' ? '📢 Διάθεση Φαρμάκων (Προσφορά)' : '🔔 Αναζήτηση Φαρμάκων';
-            document.getElementById('reqTitle').className = type === 'Διάθεση' ? 'text-2xl font-bold mb-6 border-b pb-4 text-orange-600' : 'text-2xl font-bold mb-6 border-b pb-4 text-green-700';
-            document.getElementById('submitBtn').innerText = type === 'Διάθεση' ? 'ΔΗΜΟΣΙΕΥΣΗ ΠΡΟΣΦΟΡΑΣ' : 'ΔΗΜΟΣΙΕΥΣΗ ΑΝΑΖΗΤΗΣΗΣ';
-            document.getElementById('submitBtn').className = type === 'Διάθεση' ? 'w-full bg-orange-500 text-white py-5 rounded-xl font-black' : 'w-full bg-green-600 text-white py-5 rounded-xl font-black';
+        // -- ΛΟΓΙΚΗ ΔΥΝΑΜΙΚΩΝ ΟΜΑΔΩΝ --
+        function populateGroupDropdowns() {
+            const optionsHtml = activeGroups.map(g => `<option value="${g}">${g === 'ΟΛΟΙ' ? 'Δημόσια (ΟΛΟΙ)' : g}</option>`).join('');
+            const createNewOption = `<option value="NEW" class="text-blue-600 font-black">➕ Δημιουργία Νέας Ομάδας...</option>`;
+            
+            document.getElementById('groupSelect').innerHTML = optionsHtml + createNewOption;
+            document.getElementById('edit_groupSelect').innerHTML = optionsHtml + createNewOption;
+            document.getElementById('targetGroup').innerHTML = optionsHtml; // Στα αιτήματα στέλνεις μόνο σε υπάρχουσες
+        }
+
+        function toggleNewGroup(selectId, wrapId) {
+            const select = document.getElementById(selectId);
+            const wrap = document.getElementById(wrapId);
+            if (select.value === 'NEW') wrap.classList.remove('hidden');
+            else wrap.classList.add('hidden');
+        }
+
+        function getFinalGroupValue(selectId, inputId) {
+            const selectVal = document.getElementById(selectId).value;
+            if (selectVal === 'NEW') {
+                const newVal = document.getElementById(inputId).value.trim().toUpperCase();
+                return newVal !== '' ? newVal : 'ΟΛΟΙ';
+            }
+            return selectVal;
         }
 
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
+            window.scrollTo(0,0);
         }
 
+        function openRequest(type) {
+            currentType = type;
+            showSection('request');
+            document.getElementById('reqTitle').innerHTML = type === 'Διάθεση' ? '<i class="fas fa-bullhorn mr-2"></i>Διάθεση Φαρμάκων' : '<i class="fas fa-search-plus mr-2"></i>Αναζήτηση Φαρμάκων';
+            document.getElementById('reqTitle').className = type === 'Διάθεση' ? 'text-2xl font-bold mb-6 border-b pb-4 text-orange-600' : 'text-2xl font-bold mb-6 border-b pb-4 text-green-700';
+            document.getElementById('submitBtn').innerText = type === 'Διάθεση' ? 'ΔΗΜΟΣΙΕΥΣΗ ΠΡΟΣΦΟΡΑΣ' : 'ΔΗΜΟΣΙΕΥΣΗ ΑΝΑΖΗΤΗΣΗΣ';
+            document.getElementById('submitBtn').className = type === 'Διάθεση' ? 'w-full bg-orange-500 hover:bg-orange-600 text-white py-5 rounded-xl font-black shadow-lg uppercase transition' : 'w-full bg-green-600 hover:bg-green-700 text-white py-5 rounded-xl font-black shadow-lg uppercase transition';
+        }
+
+        // --- ΚΑΛΑΘΙ ΚΑΙ ΦΑΡΜΑΚΑ ---
         function onDrugInput(val) {
             const box = document.getElementById('drugSuggestions');
+            selectedDrug = null;
             if (val.length < 2) { box.classList.add('hidden'); return; }
-            const matches = drugsDatabase.filter(d => d.name.toLowerCase().includes(val.toLowerCase())).slice(0, 10);
-            box.innerHTML = matches.map(d => `<div onmousedown="selectDrug('${d.barcode}')">${d.name}</div>`).join('');
+            const q = val.toLowerCase();
+            const matches = drugsDatabase.filter(d => d.name.toLowerCase().includes(q)).slice(0, 20);
+            box.innerHTML = matches.map(d => `<div onmousedown="selectDrug('${d.barcode}')"><b>${d.name}</b> <span class="text-[10px] text-gray-400 ml-2">XT: ${d.xt}</span></div>`).join('');
             box.classList.remove('hidden');
         }
 
         function selectDrug(barcode) {
-            const d = drugsDatabase.find(x => String(x.barcode) === barcode);
+            const d = drugsDatabase.find(x => String(x.barcode) === String(barcode));
+            if (!d) return;
             selectedDrug = d;
             document.getElementById('drug').value = d.name;
             document.getElementById('drugSuggestions').classList.add('hidden');
         }
 
         function addToCart() {
-            if(!selectedDrug) return;
-            requestCart.push({name: selectedDrug.name, qty: document.getElementById('qty').value, xt: selectedDrug.xt});
-            renderCart();
-            document.getElementById('drug').value = '';
+            if (!selectedDrug) return alert("⚠️ Επιλέξτε πρώτα ένα φάρμακο από τη λίστα.");
+            let qty = parseInt(document.getElementById('qty').value) || 1;
+            requestCart.push({ name: selectedDrug.name, xt: selectedDrug.xt, qty: qty });
             selectedDrug = null;
+            document.getElementById('drug').value = '';
+            document.getElementById('qty').value = 1;
+            renderCart();
         }
 
         function renderCart() {
             const area = document.getElementById('cartArea');
+            const items = document.getElementById('cartItems');
+            if (requestCart.length === 0) { area.classList.add('hidden'); return; }
             area.classList.remove('hidden');
-            document.getElementById('cartItems').innerHTML = requestCart.map((item, i) => `<div class="flex justify-between bg-white p-2 rounded-lg border"><b>${item.name}</b> <span>${item.qty} τεμ.</span></div>`).join('');
+            items.innerHTML = requestCart.map((item, index) => `<div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border"><div class="font-bold text-sm text-gray-800">${item.name} <span class="text-xs text-green-700 ml-2">(${item.qty} τεμ.)</span></div><button onclick="removeFromCart(${index})" class="text-red-500 font-black"><i class="fas fa-times"></i></button></div>`).join('');
         }
 
+        function removeFromCart(index) { requestCart.splice(index, 1); renderCart(); }
+
+        // --- ΒΑΣΙΚΗ ΣΥΝΑΡΤΗΣΗ POST ---
         async function handleAction(type, btn) {
-            btn.disabled = true;
-            let payload = { action: type };
-            if (type === 'register') {
-                ['name','email','group'].forEach(id => payload[id] = document.getElementById(id).value);
-            } else if (type === 'request') {
-                payload.type = currentType;
-                payload.targetGroup = document.getElementById('targetGroup').value;
-                payload.requesterEmail = document.getElementById('reqEmail').value;
-                payload.cart = requestCart;
+            if (type === 'register' && !document.getElementById('gdprConsent').checked) return alert("⚠️ Πρέπει να αποδεχτείτε τους όρους.");
+            if (type === 'request') {
+                if (!document.getElementById('reqEmail').value.trim()) return alert("⚠️ Συμπληρώστε το Email σας.");
+                if (selectedDrug) addToCart(); 
+                if (requestCart.length === 0) return alert("⚠️ Η λίστα φαρμάκων είναι κενή.");
             }
-            await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
-            alert("Επιτυχία!");
-            location.reload();
+
+            const oldT = btn.innerText; btn.innerText = "⏳..."; btn.disabled = true;
+            let p = { action: type };
+            
+            if (type === 'register') {
+                ['name','afm','email','manager','association','am','gemi','address','city','zip','mobile','phone'].forEach(id => p[id] = document.getElementById(id) ? document.getElementById(id).value.trim() : "");
+                p.promoConsent = document.getElementById('promoConsent').checked ? "ΝΑΙ" : "ΟΧΙ";
+                p.gdprConsent = "ΑΠΟΔΟΧΗ";
+                p.group = getFinalGroupValue('groupSelect', 'newGroupInput'); // Η νέα δυναμική ομάδα!
+            } else if (type === 'request') {
+                p.type = currentType;
+                p.targetGroup = document.getElementById('targetGroup').value;
+                p.requesterEmail = document.getElementById('reqEmail').value.trim();
+                p.cart = requestCart; 
+            }
+
+            try {
+                await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
+                alert("✅ Επιτυχία!");
+                if (type === 'register') showSection('request');
+                else if (type === 'request') { requestCart = []; renderCart(); }
+            } catch(err) { alert("❌ Σφάλμα επικοινωνίας."); }
+            finally { btn.innerText = oldT; btn.disabled = false; }
         }
 
+        // --- ΥΠΟΛΟΙΠΕΣ ΣΥΝΑΡΤΗΣΕΙΣ ---
         async function loadProfile() {
-            const email = document.getElementById('profileEmailSearch').value;
-            const resp = await fetch(APP_URL + "?action=getProfile&email=" + encodeURIComponent(email));
-            const data = await resp.json();
-            if(data.error) return alert("Δεν βρέθηκε");
+            const email = document.getElementById('profileEmailSearch').value.trim();
+            const r = await fetch(APP_URL + "?action=getProfile&email=" + encodeURIComponent(email));
+            const data = await r.json();
+            if(data.error) return alert("❌ Δεν βρέθηκε.");
+            document.getElementById('profileSearch').classList.add('hidden');
             document.getElementById('profileEditForm').classList.remove('hidden');
+            document.getElementById('oldEmail').value = data.email;
             document.getElementById('edit_name').value = data.name;
-            document.getElementById('edit_group').value = data.group || "ΟΛΟΙ";
+            document.getElementById('edit_email').value = data.email;
+            document.getElementById('edit_mobile').value = data.mobile;
+            document.getElementById('edit_groupSelect').value = activeGroups.includes(data.group) ? data.group : 'ΟΛΟΙ';
+        }
+
+        async function updateProfile(btn) {
+            btn.innerText = "⏳...";
+            let payload = {
+                action: 'updateProfile',
+                oldEmail: document.getElementById('oldEmail').value,
+                name: document.getElementById('edit_name').value.trim(),
+                email: document.getElementById('edit_email').value.trim(),
+                mobile: document.getElementById('edit_mobile').value.trim(),
+                group: getFinalGroupValue('edit_groupSelect', 'edit_newGroupInput') // Η νέα ομάδα στο Profile
+            };
+            await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+            alert("✅ Αποθηκεύτηκαν!"); location.reload(); 
+        }
+
+        async function fetchMyRequests() {
+            const email = document.getElementById('searchEmail').value.trim();
+            const area = document.getElementById('resultsArea');
+            area.innerHTML = "⏳ Φόρτωση...";
+            const r = await fetch(APP_URL + "?action=myRequests&email=" + encodeURIComponent(email));
+            const data = await r.json();
+            area.innerHTML = data.reverse().map(req => `<div class="border p-4 rounded-xl mb-2"><b>${req.type}:</b><br>${req.drug.replace(/\n/g, '<br>')} <hr class="my-2">Status: ${req.status}</div>`).join('');
+        }
+
+        async function loadTerms() {
+            showSection('terms');
+            if (document.getElementById('termsContainer').innerHTML.includes('fa-balance-scale')) return;
+            const res = await fetch('terms.html');
+            document.getElementById('termsContainer').innerHTML = await res.text();
         }
     </script>
 </body>
