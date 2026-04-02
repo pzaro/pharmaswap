@@ -70,7 +70,7 @@
                     </label>
                     <label class="flex items-start gap-3 cursor-pointer">
                         <input type="checkbox" id="promoConsent" class="w-5 h-5 accent-blue-700">
-                        <span class="text-xs text-blue-800">Συναινώ στην αποστολή επιστημονικού υλικού (Προαιρετικό).</span>
+                        <span class="text-xs text-blue-800">Συναινώ στην αποστολή επιστημονικού/εκπαιδευτικού υλικού από την Zarkolia Health (Προαιρετικό).</span>
                     </label>
                 </div>
                 <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-black shadow-lg mt-2 uppercase tracking-widest">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
@@ -150,15 +150,29 @@
             <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl font-black shadow-lg uppercase tracking-widest transition">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
 
-        <section id="terms" class="section-content hidden bg-white p-10 rounded-3xl shadow-sm border text-xs leading-relaxed text-gray-600">
-            <h2 class="text-xl font-bold mb-4 text-blue-900"><i class="fas fa-balance-scale mr-2"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
-            <ul class="list-disc pl-5 space-y-2">
-                <li>Η πλατφόρμα MediX λειτουργεί αυστηρά ως ψηφιακός διαμεσολαβητής επικοινωνίας μεταξύ φαρμακείων.</li>
-                <li>Δεν αγοράζει, δεν πωλεί και δεν διανέμει φαρμακευτικά σκευάσματα.</li>
-                <li>Η ευθύνη για τη γνησιότητα, την ποιότητα και τη νόμιμη διακίνηση βαρύνει αποκλειστικά τα εμπλεκόμενα φαρμακεία.</li>
-                <li>Τα προσωπικά δεδομένα (GDPR) χρησιμοποιούνται μόνο για τις ανάγκες διασύνδεσης της πλατφόρμας.</li>
-            </ul>
+        <section id="terms" class="section-content hidden bg-white p-10 rounded-3xl shadow-sm border text-sm leading-relaxed text-gray-700">
+            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-balance-scale mr-2"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
+            <div class="space-y-4 mb-10">
+                <p><b>Αποκλειστικός Ρόλος Διαμεσολαβητή:</b> Η πλατφόρμα <b>MediX – PharmaSwap Network</b> αποτελεί αποκλειστικά ένα δωρεάν ψηφιακό εργαλείο διασύνδεσης και διευκόλυνσης της επικοινωνίας μεταξύ νόμιμα αδειοδοτημένων φαρμακείων εντός της Ελληνικής Επικράτειας. Το MediX και ο δημιουργός του, Παναγιώτης Ζαρογουλίδης, σε καμία περίπτωση δεν αγοράζουν, δεν πωλούν, δεν διανέμουν, δεν αποθηκεύουν και δεν εμπορεύονται φαρμακευτικά σκευάσματα ή άλλα προϊόντα υγείας.</p>
+                <p><b>Αποκλειστική Ευθύνη Συναλλασσόμενων Φαρμακείων:</b> Κάθε συναλλαγή, οικονομικός διακανονισμός, αποστολή, παραλαβή και τιμολόγηση προϊόντων που προκύπτει μέσα από τη χρήση της πλατφόρμας, εκτελείται αποκλειστικά μεταξύ των εμπλεκόμενων φαρμακείων. Τα συμβαλλόμενα μέρη φέρουν την απόλυτη και ακέραιη ευθύνη για τη συμμόρφωσή τους με την ισχύουσα φαρμακευτική νομοθεσία, τις οδηγίες του Εθνικού Οργανισμού Φαρμάκων (ΕΟΦ) και τους κανόνες δεοντολογίας.</p>
+                <p><b>Ποιότητα και Γνησιότητα Σκευασμάτων:</b> Η πλατφόρμα δεν έχει τη δυνατότητα και δεν αναλαμβάνει την υποχρέωση ελέγχου της γνησιότητας, της ποιότητας, της ημερομηνίας λήξης, της ακεραιότητας της συσκευασίας ή της ορθής συντήρησης (π.χ. τήρηση αλυσίδας ψύχους) των δηλωθέντων φαρμάκων. Η ευθύνη για τον έλεγχο των εν λόγω παραμέτρων κατά την παραλαβή του προϊόντος βαρύνει αποκλειστικά τον παραλαμβάνοντα φαρμακοποιό.</p>
+                <p><b>Απουσία Τεχνικών Εγγυήσεων:</b> Η υπηρεσία του MediX παρέχεται «ως έχει» (As Is). Ο δημιουργός δεν φέρει καμία νομική ή οικονομική ευθύνη για ενδεχόμενα τεχνικά προβλήματα, καθυστερήσεις στις ειδοποιήσεις, προσωρινή μη διαθεσιμότητα του συστήματος, απώλεια δεδομένων ή λανθασμένες καταχωρήσεις αποθεμάτων από τους χρήστες.</p>
+            </div>
+
+            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-shield-alt mr-2"></i>Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR)</h2>
+            <div class="space-y-4 mb-10">
+                <p><b>Συλλογή και Σκοπός Επεξεργασίας:</b> Η πλατφόρμα <b>MediX</b> συλλέγει και επεξεργάζεται τα απολύτως απαραίτητα στοιχεία που καταχωρούνται οικειοθελώς από τα μέλη κατά την εγγραφή τους (Επωνυμία, ΑΦΜ, ΓΕΜΗ, ΑΜ ΤΣΑΥ, Email, Διεύθυνση και Τηλέφωνα επικοινωνίας). Μοναδικός σκοπός της συλλογής αυτών των δεδομένων είναι η αυστηρή ταυτοποίηση των επαγγελματιών υγείας, η ασφαλής λειτουργία του δικτύου και η διευκόλυνση της μεταξύ τους επικοινωνίας για την αντιμετώπιση των ελλείψεων φαρμάκων, σε απόλυτη εναρμόνιση με τον Γενικό Κανονισμό για την Προστασία Δεδομένων (ΕΕ) 2016/679 (GDPR).</p>
+                <p><b>Κοινοποίηση και Προστασία Δεδομένων:</b> Τα προσωπικά και επαγγελματικά σας δεδομένα δεν πωλούνται, δεν ενοικιάζονται και δεν παραχωρούνται σε τρίτους για κανέναν εμπορικό ή διαφημιστικό σκοπό. Τα στοιχεία επικοινωνίας σας (Ονοματεπώνυμο Υπευθύνου, Τηλέφωνο και Email) κοινοποιούνται αυτόματα <b>αποκλειστικά και μόνο</b> στον συγκεκριμένο συνάδελφο με τον οποίο επιλέγετε να συνδεθείτε για την ολοκλήρωση ενός ενεργού αιτήματος ανταλλαγής.</p>
+                <p><b>Εμπιστευτικότητα Μεταξύ Χρηστών:</b> Τα μέλη του MediX δεσμεύονται να χρησιμοποιούν τα στοιχεία επικοινωνίας που λαμβάνουν από συναδέλφους μέσω της πλατφόρμας αυστηρά και μόνο για την ολοκλήρωση της εκάστοτε συνεννόησης. Απαγορεύεται ρητά η χρήση αυτών των στοιχείων για οποιονδήποτε άλλο σκοπό (π.χ. αποστολή ανεπιθύμητης αλληλογραφίας/spam, διαφήμιση).</p>
+            </div>
+
+            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-envelope-open-text mr-2"></i>Συναίνεση Αποστολής Επιστημονικού Υλικού – Zarkolia Health</h2>
+            <div class="space-y-4">
+                <p><b>Ενημέρωση και Εκπαίδευση:</b> Στο πλαίσιο της συνεχούς επιστημονικής ενημέρωσης των επαγγελματιών υγείας, παρέχεται η δυνατότητα στα εγγεγραμμένα μέλη του MediX να λαμβάνουν ενημερωτικά μηνύματα (email) με επιστημονικό, εκπαιδευτικό και ερευνητικό υλικό, καθώς και νέα του κλάδου, από την <b>"Zarkolia Health"</b> υπό την επιστημονική επιμέλεια και ευθύνη του φαρμακοποιού Παναγιώτη Ζαρογουλίδη.</p>
+                <p><b>Προαιρετικός Χαρακτήρας και Ανάκληση:</b> Η συναίνεση για τη λήψη του συγκεκριμένου επιστημονικού υλικού είναι απολύτως προαιρετική (opt-in) και δεν αποτελεί προϋπόθεση για την εγγραφή ή την πλήρη χρήση της πλατφόρμας MediX. Κάθε χρήστης διατηρεί το δικαίωμα να ανακαλέσει τη συναίνεσή του οποιαδήποτε στιγμή.</p>
+            </div>
         </section>
+
     </div>
 
     <footer class="mt-auto border-t p-6 text-center bg-white">
@@ -167,13 +181,11 @@
     </footer>
 
     <script>
-        // ΤΟ ΝΕΟ ΣΟΥ URL (Μην το αλλάξεις)
         const APP_URL = "https://script.google.com/macros/s/AKfycbwOm_3Rstw2ZKYgpE9VHxhdSM1f0CyjF3PhJSzf1sBH9R-XiJn8EED9G1JlWbDAUBVS/exec";
         
         let drugsDatabase = [];
         let selectedDrug = null;
 
-        // Φόρτωση φαρμάκων στην αρχή
         window.addEventListener('DOMContentLoaded', async () => {
             try {
                 const resp = await fetch(APP_URL + "?action=getDrugs");
@@ -181,14 +193,12 @@
             } catch(err) { console.error("Error loading drugs:", err); }
         });
 
-        // Εναλλαγή Ενοτήτων (Tabs)
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
             window.scrollTo(0,0);
         }
 
-        // --- ΣΥΝΑΡΤΗΣΕΙΣ ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΦΑΡΜΑΚΩΝ ---
         function onDrugInput(val) {
             const box = document.getElementById('drugSuggestions');
             selectedDrug = null;
@@ -222,7 +232,6 @@
             document.getElementById('priceInfo').classList.remove('hidden');
         }
 
-        // --- ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΙΣΤΟΡΙΚΟ ---
         async function fetchMyRequests() {
             const email = document.getElementById('searchEmail').value.trim();
             const area = document.getElementById('resultsArea');
@@ -244,7 +253,6 @@
             } catch(e) { area.innerHTML = "<p class='text-center text-red-500'>Σφάλμα σύνδεσης.</p>"; }
         }
 
-        // --- ΣΥΝΑΡΤΗΣΕΙΣ ΓΙΑ ΤΟ ΠΡΟΦΙΛ ---
         async function loadProfile() {
             const email = document.getElementById('profileEmailSearch').value.trim();
             if(!email) return alert("Παρακαλώ εισάγετε email.");
@@ -257,7 +265,6 @@
                 document.getElementById('profileSearch').classList.add('hidden');
                 document.getElementById('profileEditForm').classList.remove('hidden');
                 
-                // Γέμισμα όλων των πεδίων
                 document.getElementById('oldEmail').value = data.email;
                 document.getElementById('edit_name').value = data.name || '';
                 document.getElementById('edit_afm').value = data.afm || '';
@@ -300,7 +307,7 @@
             try {
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
                 alert("✅ Τα στοιχεία σας αποθηκεύτηκαν επιτυχώς!");
-                location.reload(); // Ανανέωση σελίδας
+                location.reload(); 
             } catch(e) { 
                 alert("❌ Σφάλμα κατά την αποθήκευση."); 
                 btn.disabled = false; 
@@ -308,7 +315,6 @@
             }
         }
 
-        // --- ΒΑΣΙΚΗ ΣΥΝΑΡΤΗΣΗ ΕΠΙΚΟΙΝΩΝΙΑΣ (Register, Request, Tracking) ---
         async function handleAction(type, btn) {
             if (type === 'register') {
                 const email = document.getElementById('email').value.trim();
