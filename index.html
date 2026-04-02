@@ -224,7 +224,7 @@
     </footer>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwfEJbavhHRn8ivMrTDx3MW4c96t7Gc4dtG2yKq7gU9zAtzr-f4N0QqrX-D1Z8RyuHq/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbxCPnxakEfDbrfNsrExzcl42TotSSsX_gey4x3q8HqqSZpuIBkpu26PO0Uva5q-KmW4/exec";
         
         let drugsDatabase = [];
         let selectedDrug = null;
@@ -349,16 +349,31 @@
         }
 
         async function handleAction(type, btn) {
+            // -- 1. ΕΛΕΓΧΟΙ ΕΓΓΡΑΦΗΣ --
             if (type === 'register') {
+                // Έλεγχος αν το email είναι έγκυρο
+                const emailInput = document.getElementById('email').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+                
+                if (!emailRegex.test(emailInput)) {
+                    alert("❌ ΛΑΘΟΣ EMAIL: Παρακαλώ καταχωρήστε μια έγκυρη διεύθυνση Email (π.χ. name@example.com) για να προχωρήσει η εγγραφή.");
+                    return; 
+                }
+
+                // Έλεγχος συγκατάθεσης όρων
                 if (!document.getElementById('gdprConsent').checked || !document.getElementById('termsConsent').checked) {
-                    alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) καθώς και τους Όρους Χρήσης για να συνεχίσετε.");
+                    alert("⚠️ Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) καθώς και τους Όρους Χρήσης για να συνεχίσετε.");
                     return;
                 }
             }
+
+            // -- 2. ΕΛΕΓΧΟΙ ΝΕΟΥ ΑΙΤΗΜΑΤΟΣ --
             if (type === 'request') {
                 if (!document.getElementById('reqEmail').value.trim()) { alert("Συμπληρώστε το email σας."); return; }
                 if (!selectedDrug) { alert("Παρακαλώ επιλέξτε φάρμακο από τη λίστα ή με barcode."); return; }
             }
+
+            // -- 3. ΕΛΕΓΧΟΙ TRACKING --
             if (type === 'tracking' && !document.getElementById('trackReqId').value.trim()) {
                 alert("Συμπληρώστε το ID αιτήματος."); return;
             }
@@ -386,7 +401,7 @@
             try {
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
                 if (type === 'register') {
-                    alert("✅ Εγγραφή ολοκληρώθηκε!");
+                    alert("✅ Εγγραφή ολοκληρώθηκε επιτυχώς!");
                     showSection('request');
                 } else if (type === 'request') {
                     alert("✅ Το αίτημα δημοσιεύτηκε! Όλα τα εγγεγραμμένα φαρμακεία ειδοποιήθηκαν.");
