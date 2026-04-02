@@ -7,19 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        #drugSuggestions {
-            position: absolute;
-            z-index: 1000;
-            background: white;
-            border: 2px solid #16a34a;
-            border-radius: 12px;
-            max-height: 220px;
-            overflow-y: auto;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            width: 100%;
-            left: 0;
-            top: 100%;
-        }
+        #drugSuggestions { position: absolute; z-index: 1000; background: white; border: 2px solid #16a34a; border-radius: 12px; max-height: 220px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.12); width: 100%; left: 0; top: 100%; }
         #drugSuggestions div { padding: 10px 16px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
         #drugSuggestions div:hover { background: #f0fdf4; font-weight: bold; }
         .drug-input-wrap { position: relative; }
@@ -31,160 +19,77 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-black italic cursor-pointer" onclick="showSection('home')">MediX</h1>
             <div class="flex space-x-3 md:space-x-4 text-[9px] md:text-xs font-bold uppercase flex-wrap justify-end">
-                <button onclick="showSection('home')" class="hover:text-orange-400 transition">Αρχικη</button>
-                <button onclick="showSection('register')" class="hover:text-orange-400 transition">Εγγραφη</button>
-                <button onclick="showSection('request')" class="hover:text-orange-400 transition">Νεο Αιτημα</button>
-                <button onclick="showSection('my-requests')" class="hover:text-orange-400 transition">Ιστορικο</button>
-                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full shadow hover:bg-orange-600 transition">Tracking</button>
+                <button onclick="showSection('home')">Αρχικη</button>
+                <button onclick="showSection('register')">Εγγραφη</button>
+                <button onclick="showSection('request')">Νεο Αιτημα</button>
+                <button onclick="showSection('my-requests')">Ιστορικο</button>
+                <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full shadow transition">Tracking</button>
             </div>
         </div>
     </nav>
 
     <div class="container mx-auto mt-8 p-4 max-w-4xl flex-grow mb-10">
 
-        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border">
-            <div class="text-center mb-12">
-                <div class="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-full font-bold text-xs uppercase tracking-widest mb-4">PharmaSwap Network</div>
-                <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-4 tracking-tight">Το Δίκτυο Αλληλεγγύης του Ελληνικού Φαρμακείου</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Το <b>MediX</b> σχεδιάστηκε για να λύσει το καθημερινό πρόβλημα των ελλείψεων. Είναι μια δωρεάν πλατφόρμα που συνδέει άμεσα τα φαρμακεία, εξοικονομώντας πολύτιμο χρόνο αναζήτησης, ώστε κανένας ασθενής να μην μένει χωρίς τη θεραπεία του.
-                </p>
-            </div>
-
-            <h3 class="text-xl font-black text-gray-800 border-b pb-3 mb-8 flex items-center gap-2"><i class="fas fa-cogs text-blue-500"></i> Πώς λειτουργεί η πλατφόρμα</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-900 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">1</div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Εγγραφή Φαρμακείου</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">Δημιουργείτε το προφίλ σας δωρεάν. Το σύστημα ταυτοποιεί τα φαρμακεία για να διασφαλίσει ένα κλειστό, επαγγελματικό και ασφαλές δίκτυο επικοινωνίας.</p>
-                </div>
-                
-                <div class="bg-green-50 p-6 rounded-2xl border border-green-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">2</div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Άμεση Αναζήτηση</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">Κάνετε νέο αίτημα σκανάροντας το barcode ή γράφοντας το φάρμακο. Η πλατφόρμα βρίσκει αυτόματα τις τιμές (ΧΤ/ΛΤ) και ειδοποιεί με email όλα τα μέλη του δικτύου.</p>
-                </div>
-
-                <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">3</div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Αποδοχή & Σύνδεση</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">Αν ένας συνάδελφος έχει το απόθεμα, πατάει "Αποδοχή". Το σύστημα ανταλλάσσει αυτόματα τα τηλέφωνα και των δύο φαρμακείων για να επικοινωνήσετε άμεσα.</p>
-                </div>
-
-                <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-black text-xl mb-4 shadow-lg">4</div>
-                    <h4 class="font-bold text-gray-900 mb-2 text-lg">Ασφάλεια & Tracking</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">Μόλις κανονίσετε την αποστολή, «κλειδώνετε» τη συναλλαγή καταχωρώντας το Serial Number (QR) και το Voucher της μεταφορικής, διασφαλίζοντας πλήρη ιχνηλασιμότητα.</p>
-                </div>
-            </div>
-
-            <div class="mt-10 text-center bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                <p class="text-sm text-blue-900 italic font-medium mb-4">Το MediX είναι μια πρωτοβουλία αλληλεγγύης και παρέχεται εντελώς δωρεάν από τον Παναγιώτη Ζαρογουλίδη.</p>
-                <button onclick="showSection('register')" class="bg-blue-900 text-white px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-lg hover:bg-blue-800 hover:-translate-y-1 transition transform">ΞΕΚΙΝΗΣΤΕ ΕΔΩ</button>
-            </div>
+        <section id="home" class="section-content bg-white p-10 rounded-3xl shadow-sm border text-center">
+            <h2 class="text-4xl font-black text-blue-900 mb-4">PharmaSwap Network</h2>
+            <p class="text-gray-600 mb-8">Το δίκτυο αλληλεγγύης του Ελληνικού Φαρμακείου.</p>
+            <button onclick="showSection('register')" class="bg-blue-900 text-white px-8 py-4 rounded-xl font-bold">ΞΕΚΙΝΗΣΤΕ ΕΔΩ</button>
         </section>
 
         <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Email</label><input type="email" id="email" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Υπεύθυνος Φαρμακοποιός</label><input type="text" id="manager" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΜ (ΤΣΑΥ)</label><input type="text" id="am" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΓΕΜΗ</label><input type="text" id="gemi" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Διεύθυνση</label><input type="text" id="address" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Πόλη</label><input type="text" id="city" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΤΚ</label><input type="text" id="zip" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Κινητό</label><input type="tel" id="mobile" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">Σταθερό</label><input type="tel" id="phone" class="w-full border-2 p-3 rounded-xl outline-none bg-gray-50"></div>
+                <input type="text" id="name" placeholder="Επωνυμία" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="afm" placeholder="ΑΦΜ" class="border p-3 rounded-xl bg-gray-50">
+                <input type="email" id="email" placeholder="Email" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="manager" placeholder="Υπεύθυνος Φαρμακοποιός" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="am" placeholder="ΑΜ (ΤΣΑΥ)" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="gemi" placeholder="ΓΕΜΗ" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="address" placeholder="Διεύθυνση" class="border p-3 rounded-xl bg-gray-50 md:col-span-2">
+                <input type="text" id="city" placeholder="Πόλη" class="border p-3 rounded-xl bg-gray-50">
+                <input type="text" id="zip" placeholder="ΤΚ" class="border p-3 rounded-xl bg-gray-50">
+                <input type="tel" id="mobile" placeholder="Κινητό" class="border p-3 rounded-xl bg-gray-50">
+                <input type="tel" id="phone" placeholder="Σταθερό" class="border p-3 rounded-xl bg-gray-50">
 
-                <div class="md:col-span-2 mt-4 space-y-4">
-                    <div class="p-5 bg-gray-50 rounded-2xl border-2 border-gray-200">
-                        <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Πολιτική Απορρήτου & Όροι Χρήσης</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Τα προσωπικά σας δεδομένα συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR).</p>
-                        
-                        <div class="space-y-3">
-                            <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
-                                <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
-                            </label>
-                            
-                            <label class="flex items-start gap-3 cursor-pointer border-t border-gray-200 pt-3">
-                                <input type="checkbox" id="termsConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
-                                <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> πλήρως τους <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:underline">Όρους Χρήσης & Αποποίηση Ευθυνών</a> της Πλατφόρμας. <span class="text-red-500">*</span></span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="p-5 bg-blue-50 rounded-2xl border-2 border-blue-100">
-                        <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας επιστημονικό/εκπαιδευτικό υλικό.</p>
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0">
-                            <span class="text-xs text-gray-700"><b>Συναινώ</b> στην αποστολή επιστημονικού υλικού. <span class="text-gray-400">(Προαιρετικό)</span></span>
-                        </label>
-                    </div>
+                <div class="md:col-span-2 p-5 bg-gray-50 rounded-2xl border-2 border-gray-200 mt-4">
+                    <label class="flex items-start gap-3 cursor-pointer mb-3">
+                        <input type="checkbox" id="gdprConsent" class="w-5 h-5 accent-blue-700">
+                        <span class="text-xs font-bold">Αποδέχομαι την επεξεργασία δεδομένων (GDPR) και τους Όρους Χρήσης.</span>
+                    </label>
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" id="promoConsent" class="w-5 h-5 accent-blue-700">
+                        <span class="text-xs">Συναινώ στην αποστολή επιστημονικού υλικού.</span>
+                    </label>
                 </div>
-                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-2xl font-bold shadow-lg mt-2">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
+                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-bold shadow-lg">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
 
         <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">Υποβολή Αιτήματος</h2>
             <div class="space-y-4">
-                <div>
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Email Εγγραφής</label>
-                    <input type="email" id="reqEmail" placeholder="Το Email εγγραφής σας" class="w-full border-2 p-4 rounded-xl outline-none focus:border-green-500 font-bold bg-green-50/30">
+                <input type="email" id="reqEmail" placeholder="Email εγγραφής" class="w-full border p-4 rounded-xl bg-green-50/30">
+                <input type="text" id="drugBarcode" placeholder="Barcode" class="w-full border p-4 rounded-xl text-center font-bold" oninput="searchByBarcode()">
+                <div class="drug-input-wrap">
+                    <input type="text" id="drug" placeholder="Όνομα φαρμάκου..." class="w-full border p-4 rounded-xl" oninput="onDrugInput(this.value)">
+                    <div id="drugSuggestions" class="hidden"></div>
                 </div>
-
-                <div>
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Barcode (Scanner ή χειροκίνητα)</label>
-                    <input type="text" id="drugBarcode" placeholder="Σκανάρετε ή πληκτρολογήστε barcode"
-                        class="w-full border-2 p-4 rounded-xl bg-green-50 font-black text-center outline-none focus:border-green-500"
-                        oninput="searchByBarcode()">
-                </div>
-
-                <div>
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Όνομα Φαρμάκου</label>
-                    <div class="drug-input-wrap">
-                        <input type="text" id="drug" placeholder="Πληκτρολογήστε τουλάχιστον 2 χαρακτήρες..."
-                            autocomplete="off"
-                            class="w-full border-2 p-4 rounded-xl font-bold outline-none focus:border-green-500"
-                            oninput="onDrugInput(this.value)">
-                        <div id="drugSuggestions" class="hidden"></div>
+                <div id="priceInfo" class="hidden p-5 bg-blue-50 border-2 rounded-2xl text-center">
+                    <p id="selectedDrugName" class="text-xs font-bold mb-2"></p>
+                    <div class="flex justify-around font-black">
+                        <div>ΧΤ: <span id="dispXT"></span></div>
+                        <div>ΛΤ: <span id="dispLT"></span></div>
                     </div>
                 </div>
-
-                <div id="priceInfo" class="hidden p-5 bg-blue-50 border-2 border-blue-200 rounded-2xl">
-                    <div class="text-center text-xs font-bold text-gray-500 italic mb-3" id="selectedDrugName"></div>
-                    <div class="flex justify-around">
-                        <div class="text-center">
-                            <span class="text-[10px] font-bold text-blue-800 uppercase block mb-1">Χονδρική (ΧΤ)</span>
-                            <span id="dispXT" class="font-black text-2xl text-blue-900"></span>
-                        </div>
-                        <div class="border-l-2 border-blue-200"></div>
-                        <div class="text-center">
-                            <span class="text-[10px] font-bold text-green-800 uppercase block mb-1">Λιανική (ΛΤ)</span>
-                            <span id="dispLT" class="font-black text-2xl text-green-700"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Ποσότητα</label>
-                    <input type="number" id="qty" value="1" min="1" class="w-full border-2 p-4 rounded-xl text-center font-bold outline-none focus:border-green-500">
-                </div>
-
-                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-2xl font-bold shadow-lg">ΔΗΜΟΣΙΕΥΣΗ ΑΙΤΗΜΑΤΟΣ</button>
+                <input type="number" id="qty" value="1" min="1" class="w-full border p-4 rounded-xl text-center">
+                <button type="button" onclick="handleAction('request', this)" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold shadow-lg">ΔΗΜΟΣΙΕΥΣΗ</button>
             </div>
         </section>
 
         <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Τα Αιτήματά μου</h2>
             <div class="flex gap-2 mb-6">
-                <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-4 rounded-xl outline-none focus:border-blue-500">
+                <input type="email" id="searchEmail" placeholder="Email σας" class="flex-1 border p-4 rounded-xl">
                 <button onclick="fetchMyRequests()" class="bg-blue-900 text-white px-8 rounded-xl font-bold">ΕΛΕΓΧΟΣ</button>
             </div>
             <div id="resultsArea" class="space-y-4"></div>
@@ -192,56 +97,36 @@
 
         <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center">
             <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">Tracking</h2>
-            <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345)" class="w-full border-2 p-4 rounded-xl mb-4 outline-none focus:border-orange-500 font-bold text-center">
-            <input type="text" id="qrcode" placeholder="Serial Number / Voucher Μεταφορικής" class="w-full border-2 p-4 rounded-xl mb-4 text-center outline-none focus:border-orange-500">
-            <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
+            <input type="text" id="trackReqId" placeholder="ID Αιτήματος" class="w-full border p-4 rounded-xl mb-4 font-bold text-center">
+            <input type="text" id="qrcode" placeholder="Serial Number / Voucher" class="w-full border p-4 rounded-xl mb-4 text-center">
+            <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-xl font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
 
-        <section id="terms" class="section-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-sm border text-gray-700 text-sm leading-relaxed">
-            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-balance-scale mr-2 text-blue-500"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
-            
-            <p class="mb-4">Η πλατφόρμα <b>MediX – PharmaSwap Network</b> (εφεξής «Πλατφόρμα») δημιουργήθηκε και παρέχεται δωρεάν ως ένα ψηφιακό εργαλείο αλληλεγγύης και επικοινωνίας, αποκλειστικά για αδειούχους φαρμακοποιούς που διατηρούν νόμιμο φαρμακείο στην Ελλάδα. Η πρόσβαση και η χρήση της Πλατφόρμας προϋποθέτει την πλήρη και ανεπιφύλακτη αποδοχή των παρακάτω όρων:</p>
-            
-            <ul class="list-disc pl-6 space-y-3 mb-6">
-                <li><b>Αποκλειστικός Ρόλος Διαμεσολαβητή (Επικοινωνίας):</b> Η Πλατφόρμα λειτουργεί αυστηρά ως μέσο ψηφιακής διασύνδεσης και ανταλλαγής στοιχείων επικοινωνίας μεταξύ των εγγεγραμμένων φαρμακείων. Το MediX και ο δημιουργός του δεν αγοράζουν, δεν πωλούν, δεν αποθηκεύουν, δεν διανέμουν και δεν εμπορεύονται φαρμακευτικά σκευάσματα.</li>
-                <li><b>Αποκλειστική Ευθύνη Συναλλασσόμενων:</b> Κάθε συναλλαγή, ανταλλαγή, τιμολόγηση, αποστολή ή οικονομικός διακανονισμός που προκύπτει μέσω της Πλατφόρμας πραγματοποιείται αποκλειστικά μεταξύ των εμπλεκόμενων φαρμακείων. Η Πλατφόρμα ουδεμία ευθύνη φέρει για την ορθή ολοκλήρωση της συναλλαγής, τυχόν οικονομικές διαφορές ή απώλειες κατά τη μεταφορά των προϊόντων.</li>
-                <li><b>Τήρηση Φαρμακευτικής Νομοθεσίας:</b> Οι συμμετέχοντες φαρμακοποιοί φέρουν την αποκλειστική και ακέραιη ευθύνη να διασφαλίζουν ότι κάθε ανταλλαγή ή διακίνηση φαρμάκων γίνεται σε απόλυτη εναρμόνιση με την ισχύουσα φαρμακευτική νομοθεσία, τους κανόνες του Εθνικού Οργανισμού Φαρμάκων (ΕΟΦ) και τις διατάξεις περί διακίνησης μεταξύ φαρμακείων.</li>
-                <li><b>Ποιότητα και Γνησιότητα Προϊόντων:</b> Η Πλατφόρμα δεν ελέγχει και δεν μπορεί να εγγυηθεί τη γνησιότητα, την ποιότητα, την ημερομηνία λήξης, την ακεραιότητα της συσκευασίας ή την ορθή συντήρηση (π.χ. αλυσίδα ψύχους) των φαρμάκων που δηλώνονται. Η ευθύνη για τον έλεγχο των σκευασμάτων κατά την παραλαβή βαρύνει αποκλειστικά τον φαρμακοποιό που τα παραλαμβάνει.</li>
-                <li><b>Ακρίβεια Πληροφοριών:</b> Η Πλατφόρμα δεν εγγυάται την ακρίβεια των αποθεμάτων που δηλώνονται, καθώς αυτά καταχωρούνται οικειοθελώς από τους χρήστες και ενδέχεται να μεταβληθούν στον φυσικό χώρο του φαρμακείου πριν την ολοκλήρωση της επικοινωνίας.</li>
-                <li><b>Λειτουργία «Ως Έχει» (As Is):</b> Η υπηρεσία παρέχεται δωρεάν, «ως έχει» και «ως διατίθεται». Ο δημιουργός της Πλατφόρμας δεν φέρει καμία ευθύνη για τυχόν τεχνικά προβλήματα, προσωρινή μη διαθεσιμότητα του συστήματος, απώλεια δεδομένων ή καθυστερήσεις στην αποστολή των αυτοματοποιημένων email.</li>
-                <li><b>Προστασία Δεδομένων μεταξύ Χρηστών:</b> Τα στοιχεία επικοινωνίας (τηλέφωνα, email, διευθύνσεις) που γνωστοποιούνται στους χρήστες μέσω της Πλατφόρμας για την κάλυψη ενός αιτήματος, απαγορεύεται αυστηρά να χρησιμοποιηθούν για οποιονδήποτε άλλο σκοπό (π.χ. διαφήμιση, προώθηση, spam) πέραν της διευθέτησης της συγκεκριμένης συναλλαγής.</li>
-            </ul>
-            <p class="font-bold text-gray-800 italic">Η ολοκλήρωση της εγγραφής στην πλατφόρμα MediX συνιστά ρητή αποδοχή της παρούσας αποποίησης ευθυνών.</p>
+        <section id="terms" class="section-content hidden bg-white p-10 rounded-3xl shadow-sm border text-xs leading-relaxed">
+            <h2 class="text-xl font-bold mb-4">Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
+            <p>Η πλατφόρμα MediX λειτουργεί ως διαμεσολαβητής επικοινωνίας...</p>
         </section>
 
     </div>
 
-    <footer class="mt-auto border-t border-gray-200 pt-6 pb-4 text-center bg-white">
-        <p class="text-xs text-gray-500">&copy; 2026 MediX - PharmaSwap Network. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
-        <p class="text-xs mt-2 mb-2">
-            <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:text-blue-800 hover:underline font-semibold transition">Όροι Χρήσης & Αποποίηση Ευθυνών</a>
-        </p>
+    <footer class="mt-auto border-t p-6 text-center bg-white">
+        <p class="text-[10px] text-gray-500">&copy; 2026 MediX. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
+        <button onclick="showSection('terms')" class="text-blue-600 text-[10px] underline mt-1">Όροι Χρήσης</button>
     </footer>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbxCPnxakEfDbrfNsrExzcl42TotSSsX_gey4x3q8HqqSZpuIBkpu26PO0Uva5q-KmW4/exec";
-        
+        const APP_URL = "https://script.google.com/macros/s/AKfycbyDKeIGHoGmCrCb3dDJHDDdWLCg3_SsmfV-HZ2Er8WE1c4c8uG6ICFYOkjroPXrgNiV/exec";
         let drugsDatabase = [];
         let selectedDrug = null;
 
         window.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const resp = await fetch(APP_URL + "?action=getDrugs");
-                drugsDatabase = await resp.json();
-            } catch(err) {
-                console.error("Σφάλμα φόρτωσης φαρμάκων:", err);
-            }
+            try { const resp = await fetch(APP_URL + "?action=getDrugs"); drugsDatabase = await resp.json(); } catch(err) {}
         });
 
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0, 0); 
+            window.scrollTo(0,0);
         }
 
         function onDrugInput(val) {
@@ -249,23 +134,13 @@
             selectedDrug = null;
             document.getElementById('priceInfo').classList.add('hidden');
             if (val.length < 2) { box.classList.add('hidden'); return; }
-
             const q = val.toLowerCase();
-            const matches = drugsDatabase.filter(d => d.name.toLowerCase().includes(q)).slice(0, 40);
-
-            if (matches.length === 0) { box.classList.add('hidden'); return; }
-
-            box.innerHTML = matches.map((d, i) =>
-                `<div onmousedown="selectDrug(event, '${d.barcode}')">
-                    <span class="font-bold">${d.name}</span>
-                    <span class="text-gray-400 text-xs ml-2">ΧΤ: ${d.xt} €</span>
-                </div>`
-            ).join('');
+            const matches = drugsDatabase.filter(d => d.name.toLowerCase().includes(q)).slice(0, 20);
+            box.innerHTML = matches.map(d => `<div onmousedown="selectDrug('${d.barcode}')">${d.name}</div>`).join('');
             box.classList.remove('hidden');
         }
 
-        function selectDrug(e, barcode) {
-            e.preventDefault(); 
+        function selectDrug(barcode) {
             const d = drugsDatabase.find(x => String(x.barcode) === String(barcode));
             if (!d) return;
             selectedDrug = d;
@@ -274,125 +149,50 @@
             fillDrugData(d);
         }
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.drug-input-wrap')) {
-                document.getElementById('drugSuggestions').classList.add('hidden');
-            }
-        });
-
         function searchByBarcode() {
             const bc = document.getElementById('drugBarcode').value.trim();
-            if (!bc) { document.getElementById('priceInfo').classList.add('hidden'); return; }
-            const d = drugsDatabase.find(x => String(x.barcode).trim() === bc);
-            if (d) {
-                selectedDrug = d;
-                document.getElementById('drug').value = d.name;
-                fillDrugData(d);
-            } else {
-                document.getElementById('priceInfo').classList.add('hidden');
-            }
+            const d = drugsDatabase.find(x => String(x.barcode) === bc);
+            if (d) { selectedDrug = d; document.getElementById('drug').value = d.name; fillDrugData(d); }
         }
 
         function fillDrugData(d) {
-            document.getElementById('drugBarcode').value = d.barcode;
             document.getElementById('selectedDrugName').innerText = d.name;
-            const xt = parseFloat(String(d.xt).replace(',','.')).toFixed(2);
-            const lt = parseFloat(String(d.lt).replace(',','.')).toFixed(2);
-            document.getElementById('dispXT').innerText = xt + " €";
-            document.getElementById('dispLT').innerText = lt + " €";
+            document.getElementById('dispXT').innerText = d.xt + " €";
+            document.getElementById('dispLT').innerText = d.lt + " €";
             document.getElementById('priceInfo').classList.remove('hidden');
         }
 
         async function fetchMyRequests() {
             const email = document.getElementById('searchEmail').value.trim();
             const area = document.getElementById('resultsArea');
-            if (!email) { alert("Βάλτε το email σας"); return; }
-            area.innerHTML = "<p class='text-center text-gray-400 animate-pulse py-6'>⏳ Αναζήτηση...</p>";
-            try {
-                const r = await fetch(APP_URL + "?action=myRequests&email=" + encodeURIComponent(email));
-                const data = await r.json();
-                if (data.length === 0) {
-                    area.innerHTML = "<p class='text-center text-gray-400 py-6'>Δεν βρέθηκαν αιτήματα.</p>";
-                    return;
-                }
-                area.innerHTML = data.reverse().map(req => `
-                    <div class="border-2 p-5 rounded-3xl ${req.status === 'Βρέθηκε' ? 'bg-green-50 border-green-300' : 'bg-gray-50 border-gray-200'}">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-gray-500">ID: <b class="text-gray-800">${req.id}</b></span>
-                            <span class="text-xs px-3 py-1 rounded-full font-bold ${req.status === 'Βρέθηκε' ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-700'}">
-                                ${req.status === 'Βρέθηκε' ? '✅ ' : '⏳ '}${req.status}
-                            </span>
-                        </div>
-                        <div class="text-lg font-bold text-gray-900 mb-2">${req.drug}</div>
-                        ${req.status === 'Βρέθηκε' ? `
-                            <div class="mt-3 p-4 bg-white rounded-2xl border border-green-200 shadow-sm">
-                                <p class="text-green-800 font-black text-xs uppercase mb-3 flex items-center gap-2">
-                                    <i class="fas fa-id-card"></i> ΣΤΟΙΧΕΙΑ ΣΥΝΑΔΕΛΦΟΥ ΠΟΥ ΣΑΣ ΚΑΛΥΠΤΕΙ
-                                </p>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between border-b pb-1"><span class="text-gray-500">Φαρμακείο:</span><b class="text-gray-900">${req.helperName || '—'}</b></div>
-                                    <div class="flex justify-between border-b pb-1"><span class="text-gray-500">Τηλέφωνο:</span><b class="text-blue-700 text-base">${req.helperPhone || '—'}</b></div>
-                                    <div class="flex justify-between"><span class="text-gray-500">Email:</span><b class="text-gray-600">${req.helperEmail || '—'}</b></div>
-                                </div>
-                                ${req.helperPhone ? `
-                                <a href="tel:${req.helperPhone}" class="mt-4 flex items-center justify-center gap-2 bg-blue-900 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-widest shadow">
-                                    <i class="fas fa-phone"></i> Καλέστε Τώρα
-                                </a>` : ''}
-                            </div>` : `
-                            <p class="text-xs text-orange-600 mt-1 flex items-center gap-1">
-                                <i class="fas fa-clock"></i> Αναμονή αποδοχής από συνάδελφο...
-                            </p>`}
-                    </div>`).join('');
-            } catch(err) {
-                area.innerHTML = "<p class='text-red-500 text-center py-4'>❌ Σφάλμα σύνδεσης. Δοκιμάστε ξανά.</p>";
-            }
+            area.innerHTML = "⏳...";
+            const r = await fetch(APP_URL + "?action=myRequests&email=" + encodeURIComponent(email));
+            const data = await r.json();
+            area.innerHTML = data.reverse().map(req => `
+                <div class="border p-4 rounded-2xl bg-gray-50">
+                    <div class="font-bold">${req.drug} - ${req.status}</div>
+                    ${req.helperPhone ? `<div class="text-blue-600 font-bold mt-2">Τηλ: ${req.helperPhone}</div>` : ''}
+                </div>`).join('');
         }
 
         async function handleAction(type, btn) {
-            // -- 1. ΕΛΕΓΧΟΙ ΕΓΓΡΑΦΗΣ --
             if (type === 'register') {
-                // Έλεγχος αν το email είναι έγκυρο
-                const emailInput = document.getElementById('email').value.trim();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-                
-                if (!emailRegex.test(emailInput)) {
-                    alert("❌ ΛΑΘΟΣ EMAIL: Παρακαλώ καταχωρήστε μια έγκυρη διεύθυνση Email (π.χ. name@example.com) για να προχωρήσει η εγγραφή.");
-                    return; 
-                }
-
-                // Έλεγχος συγκατάθεσης όρων
-                if (!document.getElementById('gdprConsent').checked || !document.getElementById('termsConsent').checked) {
-                    alert("⚠️ Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) καθώς και τους Όρους Χρήσης για να συνεχίσετε.");
-                    return;
-                }
+                const email = document.getElementById('email').value.trim();
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!regex.test(email)) { alert("❌ Λάθος Email!"); return; }
+                if (!document.getElementById('gdprConsent').checked) { alert("⚠️ Αποδεχτείτε τους όρους!"); return; }
             }
 
-            // -- 2. ΕΛΕΓΧΟΙ ΝΕΟΥ ΑΙΤΗΜΑΤΟΣ --
-            if (type === 'request') {
-                if (!document.getElementById('reqEmail').value.trim()) { alert("Συμπληρώστε το email σας."); return; }
-                if (!selectedDrug) { alert("Παρακαλώ επιλέξτε φάρμακο από τη λίστα ή με barcode."); return; }
-            }
-
-            // -- 3. ΕΛΕΓΧΟΙ TRACKING --
-            if (type === 'tracking' && !document.getElementById('trackReqId').value.trim()) {
-                alert("Συμπληρώστε το ID αιτήματος."); return;
-            }
-
-            const oldT = btn.innerText;
-            btn.innerText = "Περιμένετε...";
-            btn.disabled = true;
-
+            const oldT = btn.innerText; btn.innerText = "⏳..."; btn.disabled = true;
             let p = { action: type };
             if (type === 'register') {
-                ['name','afm','email','manager','am','gemi','address','city','zip','mobile','phone'].forEach(f => p[f] = document.getElementById(f).value.trim());
-                p.promoConsent = document.getElementById('promoConsent').checked ? "ΝΑΙ" : "ΟΧΙ";
+                ['name','afm','email','manager','am','gemi','address','city','zip','mobile','phone'].forEach(id => p[id] = document.getElementById(id).value.trim());
                 p.gdprConsent = "ΑΠΟΔΟΧΗ";
             } else if (type === 'request') {
-                const xt = document.getElementById('dispXT').innerText;
                 p.requesterEmail = document.getElementById('reqEmail').value.trim();
                 p.qty = document.getElementById('qty').value;
                 p.drugNameOnly = selectedDrug.name;
-                p.drug = selectedDrug.name + " (XT: " + xt + ")";
+                p.drug = selectedDrug.name + " (XT: " + selectedDrug.xt + ")";
             } else if (type === 'tracking') {
                 p.reqId = document.getElementById('trackReqId').value.trim();
                 p.qrcode = document.getElementById('qrcode').value.trim();
@@ -400,28 +200,10 @@
 
             try {
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
-                if (type === 'register') {
-                    alert("✅ Εγγραφή ολοκληρώθηκε επιτυχώς!");
-                    showSection('request');
-                } else if (type === 'request') {
-                    alert("✅ Το αίτημα δημοσιεύτηκε! Όλα τα εγγεγραμμένα φαρμακεία ειδοποιήθηκαν.");
-                    selectedDrug = null;
-                    document.getElementById('drug').value = '';
-                    document.getElementById('drugBarcode').value = '';
-                    document.getElementById('priceInfo').classList.add('hidden');
-                    document.getElementById('qty').value = 1;
-                } else if (type === 'tracking') {
-                    alert("✅ Το tracking καταχωρήθηκε επιτυχώς!");
-                    document.getElementById('trackReqId').value = '';
-                    document.getElementById('qrcode').value = '';
-                }
-            } catch(err) {
-                alert("❌ Σφάλμα σύνδεσης. Δοκιμάστε ξανά.");
-                console.error(err);
-            } finally {
-                btn.innerText = oldT;
-                btn.disabled = false;
-            }
+                alert("✅ Ολοκληρώθηκε!");
+                if (type === 'register') showSection('request');
+            } catch(err) { alert("❌ Σφάλμα"); }
+            finally { btn.innerText = oldT; btn.disabled = false; }
         }
     </script>
 </body>
