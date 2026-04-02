@@ -25,24 +25,24 @@
         .drug-input-wrap { position: relative; }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
     <nav class="bg-blue-900 text-white p-4 shadow-xl sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-black italic cursor-pointer" onclick="showSection('home')">MediX</h1>
             <div class="flex space-x-3 md:space-x-4 text-[9px] md:text-xs font-bold uppercase flex-wrap justify-end">
-                <button onclick="showSection('home')" class="hover:text-orange-400">Αρχικη</button>
-                <button onclick="showSection('register')" class="hover:text-orange-400">Εγγραφη</button>
-                <button onclick="showSection('request')" class="hover:text-orange-400">Νεο Αιτημα</button>
-                <button onclick="showSection('my-requests')" class="hover:text-orange-400">Ιστορικο</button>
+                <button onclick="showSection('home')" class="hover:text-orange-400 transition">Αρχικη</button>
+                <button onclick="showSection('register')" class="hover:text-orange-400 transition">Εγγραφη</button>
+                <button onclick="showSection('request')" class="hover:text-orange-400 transition">Νεο Αιτημα</button>
+                <button onclick="showSection('my-requests')" class="hover:text-orange-400 transition">Ιστορικο</button>
                 <button onclick="showSection('tracking')" class="bg-orange-500 px-3 py-1 rounded-full shadow hover:bg-orange-600 transition">Tracking</button>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 p-4 max-w-4xl min-h-screen flex flex-col">
+    <div class="container mx-auto mt-8 p-4 max-w-4xl flex-grow mb-10">
 
-        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border flex-grow">
+        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border">
             <div class="text-center mb-12">
                 <div class="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-full font-bold text-xs uppercase tracking-widest mb-4">PharmaSwap Network</div>
                 <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-4 tracking-tight">Το Δίκτυο Αλληλεγγύης του Ελληνικού Φαρμακείου</h2>
@@ -85,7 +85,7 @@
             </div>
         </section>
 
-        <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
+        <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
@@ -107,12 +107,12 @@
                         
                         <div class="space-y-3">
                             <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
+                                <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
                                 <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
                             </label>
                             
                             <label class="flex items-start gap-3 cursor-pointer border-t border-gray-200 pt-3">
-                                <input type="checkbox" id="termsConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
+                                <input type="checkbox" id="termsConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0">
                                 <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> πλήρως τους <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:underline">Όρους Χρήσης & Αποποίηση Ευθυνών</a> της Πλατφόρμας. <span class="text-red-500">*</span></span>
                             </label>
                         </div>
@@ -122,7 +122,7 @@
                         <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
                         <p class="text-xs text-gray-600 leading-relaxed mb-4">Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας επιστημονικό/εκπαιδευτικό υλικό.</p>
                         <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0" checked>
+                            <input type="checkbox" id="promoConsent" class="w-5 h-5 mt-0.5 accent-blue-600 flex-shrink-0">
                             <span class="text-xs text-gray-700"><b>Συναινώ</b> στην αποστολή επιστημονικού υλικού. <span class="text-gray-400">(Προαιρετικό)</span></span>
                         </label>
                     </div>
@@ -131,7 +131,7 @@
             </form>
         </section>
 
-        <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
+        <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">Υποβολή Αιτήματος</h2>
             <div class="space-y-4">
                 <div>
@@ -181,7 +181,7 @@
             </div>
         </section>
 
-        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
+        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Τα Αιτήματά μου</h2>
             <div class="flex gap-2 mb-6">
                 <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-4 rounded-xl outline-none focus:border-blue-500">
@@ -190,14 +190,14 @@
             <div id="resultsArea" class="space-y-4"></div>
         </section>
 
-        <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center flex-grow">
+        <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center">
             <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">Tracking</h2>
             <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345)" class="w-full border-2 p-4 rounded-xl mb-4 outline-none focus:border-orange-500 font-bold text-center">
             <input type="text" id="qrcode" placeholder="Serial Number / Voucher Μεταφορικής" class="w-full border-2 p-4 rounded-xl mb-4 text-center outline-none focus:border-orange-500">
             <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
 
-        <section id="terms" class="section-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-sm border flex-grow text-gray-700 text-sm leading-relaxed">
+        <section id="terms" class="section-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-sm border text-gray-700 text-sm leading-relaxed">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-balance-scale mr-2 text-blue-500"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
             
             <p class="mb-4">Η πλατφόρμα <b>MediX – PharmaSwap Network</b> (εφεξής «Πλατφόρμα») δημιουργήθηκε και παρέχεται δωρεάν ως ένα ψηφιακό εργαλείο αλληλεγγύης και επικοινωνίας, αποκλειστικά για αδειούχους φαρμακοποιούς που διατηρούν νόμιμο φαρμακείο στην Ελλάδα. Η πρόσβαση και η χρήση της Πλατφόρμας προϋποθέτει την πλήρη και ανεπιφύλακτη αποδοχή των παρακάτω όρων:</p>
@@ -214,14 +214,14 @@
             <p class="font-bold text-gray-800 italic">Η ολοκλήρωση της εγγραφής στην πλατφόρμα MediX συνιστά ρητή αποδοχή της παρούσας αποποίησης ευθυνών.</p>
         </section>
 
-        <footer class="mt-auto border-t border-gray-200 pt-6 pb-4 text-center mt-12">
-            <p class="text-xs text-gray-500">&copy; 2026 MediX - PharmaSwap Network. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
-            <p class="text-xs mt-2">
-                <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:text-blue-800 hover:underline font-semibold transition">Όροι Χρήσης & Αποποίηση Ευθυνών</a>
-            </p>
-        </footer>
-
     </div>
+
+    <footer class="mt-auto border-t border-gray-200 pt-6 pb-4 text-center bg-white">
+        <p class="text-xs text-gray-500">&copy; 2026 MediX - PharmaSwap Network. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
+        <p class="text-xs mt-2 mb-2">
+            <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:text-blue-800 hover:underline font-semibold transition">Όροι Χρήσης & Αποποίηση Ευθυνών</a>
+        </p>
+    </footer>
 
     <script>
         const APP_URL = "https://script.google.com/macros/s/AKfycbxb_TGeeXkV3d7EEqn4Ij7ts11TjfUM2Lsj8rg0eS1DR8HPhk5QlAWQOqpLD_jJZVWL/exec";
