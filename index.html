@@ -40,9 +40,9 @@
         </div>
     </nav>
 
-    <div class="container mx-auto mt-8 p-4 max-w-4xl mb-20">
+    <div class="container mx-auto mt-8 p-4 max-w-4xl min-h-screen flex flex-col">
 
-        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border">
+        <section id="home" class="section-content bg-white p-8 md:p-10 rounded-3xl shadow-sm border flex-grow">
             <div class="text-center mb-12">
                 <div class="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-full font-bold text-xs uppercase tracking-widest mb-4">PharmaSwap Network</div>
                 <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-4 tracking-tight">Το Δίκτυο Αλληλεγγύης του Ελληνικού Φαρμακείου</h2>
@@ -85,7 +85,7 @@
             </div>
         </section>
 
-        <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
+        <section id="register" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
@@ -102,13 +102,22 @@
 
                 <div class="md:col-span-2 mt-4 space-y-4">
                     <div class="p-5 bg-gray-50 rounded-2xl border-2 border-gray-200">
-                        <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Προστασία Προσωπικών Δεδομένων (GDPR)</p>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Τα προσωπικά σας δεδομένα συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής. Δεν διαβιβάζονται σε τρίτους, δεν χρησιμοποιούνται για εμπορικούς σκοπούς και τηρούνται σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR).</p>
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
-                            <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
-                        </label>
+                        <p class="text-xs font-black text-gray-700 uppercase mb-3 flex items-center gap-2"><i class="fas fa-shield-alt text-blue-700"></i> Πολιτική Απορρήτου & Όροι Χρήσης</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">Τα προσωπικά σας δεδομένα συλλέγονται και τηρούνται από την πλατφόρμα <b>MediX – PharmaSwap Network</b>, με αποκλειστικό σκοπό τη λειτουργία του δικτύου ανταλλαγής σύμφωνα με τον Κανονισμό (ΕΕ) 2016/679 (GDPR).</p>
+                        
+                        <div class="space-y-3">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" id="gdprConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
+                                <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> την επεξεργασία των προσωπικών μου δεδομένων. <span class="text-red-500">*</span></span>
+                            </label>
+                            
+                            <label class="flex items-start gap-3 cursor-pointer border-t border-gray-200 pt-3">
+                                <input type="checkbox" id="termsConsent" class="w-5 h-5 mt-0.5 accent-blue-700 flex-shrink-0" checked>
+                                <span class="text-xs font-bold text-gray-800">Έχω διαβάσει και <u>αποδέχομαι</u> πλήρως τους <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:underline">Όρους Χρήσης & Αποποίηση Ευθυνών</a> της Πλατφόρμας. <span class="text-red-500">*</span></span>
+                            </label>
+                        </div>
                     </div>
+                    
                     <div class="p-5 bg-blue-50 rounded-2xl border-2 border-blue-100">
                         <p class="text-xs font-black text-blue-800 uppercase mb-3 flex items-center gap-2"><i class="fas fa-envelope-open-text text-blue-600"></i> Συγκατάθεση Επικοινωνίας – Zarkolia Health</p>
                         <p class="text-xs text-gray-600 leading-relaxed mb-4">Η <b>Zarkolia Health</b>, υπό την επιστημονική ευθύνη του <b>Παναγιώτη Ζαρογουλίδη</b>, ενδέχεται να επικοινωνεί μαζί σας αποστέλλοντας επιστημονικό/εκπαιδευτικό υλικό.</p>
@@ -122,7 +131,7 @@
             </form>
         </section>
 
-        <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
+        <section id="request" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
             <h2 class="text-2xl font-bold mb-6 text-green-800 border-b pb-4">Υποβολή Αιτήματος</h2>
             <div class="space-y-4">
                 <div>
@@ -172,7 +181,7 @@
             </div>
         </section>
 
-        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border">
+        <section id="my-requests" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border flex-grow">
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4">Τα Αιτήματά μου</h2>
             <div class="flex gap-2 mb-6">
                 <input type="email" id="searchEmail" placeholder="Το Email σας" class="flex-1 border-2 p-4 rounded-xl outline-none focus:border-blue-500">
@@ -181,12 +190,37 @@
             <div id="resultsArea" class="space-y-4"></div>
         </section>
 
-        <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center">
+        <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center flex-grow">
             <h2 class="text-2xl font-bold mb-6 text-orange-700 border-b pb-4">Tracking</h2>
             <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345)" class="w-full border-2 p-4 rounded-xl mb-4 outline-none focus:border-orange-500 font-bold text-center">
             <input type="text" id="qrcode" placeholder="Serial Number / Voucher Μεταφορικής" class="w-full border-2 p-4 rounded-xl mb-4 text-center outline-none focus:border-orange-500">
             <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
         </section>
+
+        <section id="terms" class="section-content hidden bg-white p-8 md:p-10 rounded-3xl shadow-sm border flex-grow text-gray-700 text-sm leading-relaxed">
+            <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-balance-scale mr-2 text-blue-500"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
+            
+            <p class="mb-4">Η πλατφόρμα <b>MediX – PharmaSwap Network</b> (εφεξής «Πλατφόρμα») δημιουργήθηκε και παρέχεται δωρεάν ως ένα ψηφιακό εργαλείο αλληλεγγύης και επικοινωνίας, αποκλειστικά για αδειούχους φαρμακοποιούς που διατηρούν νόμιμο φαρμακείο στην Ελλάδα. Η πρόσβαση και η χρήση της Πλατφόρμας προϋποθέτει την πλήρη και ανεπιφύλακτη αποδοχή των παρακάτω όρων:</p>
+            
+            <ul class="list-disc pl-6 space-y-3 mb-6">
+                <li><b>Αποκλειστικός Ρόλος Διαμεσολαβητή (Επικοινωνίας):</b> Η Πλατφόρμα λειτουργεί αυστηρά ως μέσο ψηφιακής διασύνδεσης και ανταλλαγής στοιχείων επικοινωνίας μεταξύ των εγγεγραμμένων φαρμακείων. Το MediX και ο δημιουργός του δεν αγοράζουν, δεν πωλούν, δεν αποθηκεύουν, δεν διανέμουν και δεν εμπορεύονται φαρμακευτικά σκευάσματα.</li>
+                <li><b>Αποκλειστική Ευθύνη Συναλλασσόμενων:</b> Κάθε συναλλαγή, ανταλλαγή, τιμολόγηση, αποστολή ή οικονομικός διακανονισμός που προκύπτει μέσω της Πλατφόρμας πραγματοποιείται αποκλειστικά μεταξύ των εμπλεκόμενων φαρμακείων. Η Πλατφόρμα ουδεμία ευθύνη φέρει για την ορθή ολοκλήρωση της συναλλαγής, τυχόν οικονομικές διαφορές ή απώλειες κατά τη μεταφορά των προϊόντων.</li>
+                <li><b>Τήρηση Φαρμακευτικής Νομοθεσίας:</b> Οι συμμετέχοντες φαρμακοποιοί φέρουν την αποκλειστική και ακέραιη ευθύνη να διασφαλίζουν ότι κάθε ανταλλαγή ή διακίνηση φαρμάκων γίνεται σε απόλυτη εναρμόνιση με την ισχύουσα φαρμακευτική νομοθεσία, τους κανόνες του Εθνικού Οργανισμού Φαρμάκων (ΕΟΦ) και τις διατάξεις περί διακίνησης μεταξύ φαρμακείων.</li>
+                <li><b>Ποιότητα και Γνησιότητα Προϊόντων:</b> Η Πλατφόρμα δεν ελέγχει και δεν μπορεί να εγγυηθεί τη γνησιότητα, την ποιότητα, την ημερομηνία λήξης, την ακεραιότητα της συσκευασίας ή την ορθή συντήρηση (π.χ. αλυσίδα ψύχους) των φαρμάκων που δηλώνονται. Η ευθύνη για τον έλεγχο των σκευασμάτων κατά την παραλαβή βαρύνει αποκλειστικά τον φαρμακοποιό που τα παραλαμβάνει.</li>
+                <li><b>Ακρίβεια Πληροφοριών:</b> Η Πλατφόρμα δεν εγγυάται την ακρίβεια των αποθεμάτων που δηλώνονται, καθώς αυτά καταχωρούνται οικειοθελώς από τους χρήστες και ενδέχεται να μεταβληθούν στον φυσικό χώρο του φαρμακείου πριν την ολοκλήρωση της επικοινωνίας.</li>
+                <li><b>Λειτουργία «Ως Έχει» (As Is):</b> Η υπηρεσία παρέχεται δωρεάν, «ως έχει» και «ως διατίθεται». Ο δημιουργός της Πλατφόρμας δεν φέρει καμία ευθύνη για τυχόν τεχνικά προβλήματα, προσωρινή μη διαθεσιμότητα του συστήματος, απώλεια δεδομένων ή καθυστερήσεις στην αποστολή των αυτοματοποιημένων email.</li>
+                <li><b>Προστασία Δεδομένων μεταξύ Χρηστών:</b> Τα στοιχεία επικοινωνίας (τηλέφωνα, email, διευθύνσεις) που γνωστοποιούνται στους χρήστες μέσω της Πλατφόρμας για την κάλυψη ενός αιτήματος, απαγορεύεται αυστηρά να χρησιμοποιηθούν για οποιονδήποτε άλλο σκοπό (π.χ. διαφήμιση, προώθηση, spam) πέραν της διευθέτησης της συγκεκριμένης συναλλαγής.</li>
+            </ul>
+            <p class="font-bold text-gray-800 italic">Η ολοκλήρωση της εγγραφής στην πλατφόρμα MediX συνιστά ρητή αποδοχή της παρούσας αποποίησης ευθυνών.</p>
+        </section>
+
+        <footer class="mt-auto border-t border-gray-200 pt-6 pb-4 text-center mt-12">
+            <p class="text-xs text-gray-500">&copy; 2026 MediX - PharmaSwap Network. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
+            <p class="text-xs mt-2">
+                <a href="#" onclick="showSection('terms'); return false;" class="text-blue-600 hover:text-blue-800 hover:underline font-semibold transition">Όροι Χρήσης & Αποποίηση Ευθυνών</a>
+            </p>
+        </footer>
+
     </div>
 
     <script>
@@ -207,7 +241,7 @@
         function showSection(id) {
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0, 0); // Επιστροφή στην κορυφή της σελίδας όταν αλλάζει η καρτέλα
+            window.scrollTo(0, 0); 
         }
 
         function onDrugInput(val) {
@@ -315,9 +349,11 @@
         }
 
         async function handleAction(type, btn) {
-            if (type === 'register' && !document.getElementById('gdprConsent').checked) {
-                alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) για να συνεχίσετε.");
-                return;
+            if (type === 'register') {
+                if (!document.getElementById('gdprConsent').checked || !document.getElementById('termsConsent').checked) {
+                    alert("Παρακαλώ αποδεχτείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR) καθώς και τους Όρους Χρήσης για να συνεχίσετε.");
+                    return;
+                }
             }
             if (type === 'request') {
                 if (!document.getElementById('reqEmail').value.trim()) { alert("Συμπληρώστε το email σας."); return; }
