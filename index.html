@@ -96,7 +96,7 @@
                 <input type="hidden" id="oldEmail">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία</label><input type="text" id="edit_name" class="w-full border-2 p-3 rounded-xl bg-white outline-none focus:border-yellow-500"></div>
-                    <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ</label><input type="text" id="edit_afm" class="w-full border-2 p-3 rounded-xl bg-white outline-none focus:border-yellow-500"></div>
+                    <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ (Υποχρεωτικό)</label><input type="text" id="edit_afm" class="w-full border-2 p-3 rounded-xl bg-white outline-none focus:border-yellow-500"></div>
                     <div><label class="text-[10px] font-bold text-gray-400 uppercase">Email (Νέο)</label><input type="email" id="edit_email" class="w-full border-2 p-3 rounded-xl bg-white outline-none focus:border-yellow-500"></div>
                     
                     <div class="md:col-span-2 bg-yellow-50 p-5 rounded-2xl border-2 border-yellow-200 mt-2 mb-2">
@@ -200,7 +200,7 @@
 
     <script>
         // === ΤΟ ΝΕΟ ΣΟΥ URL ===
-        const APP_URL = "https://script.google.com/macros/s/AKfycbylL3Bo1w4hn-Sn2hAoPnFXifUGYIavWtp2YeLtOZfHlgaajRIlEN3zEsqatyctD-s/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbxTsRCkcCUqXwG6jttHkoDoyllIVm1dLXOjd8lGjaDXu9VRQcbzFinB-ezczllSSBuq/exec";
         
         let drugsDatabase = [];
         let activeGroups = [];
@@ -317,7 +317,7 @@
 
         function searchByBarcode() {
             const bc = document.getElementById('drugBarcode').value.trim();
-            const d = drugsDatabase.find(x => String(x.barcode) === bc);
+            const d = drugsDatabase.find(x => String(x.barcode) === String(barcode));
             if (d) { 
                 selectedDrug = d; 
                 document.getElementById('drug').value = d.name; 
@@ -449,11 +449,25 @@
             };
 
             try {
-                // Χωρίς no-cors για να μπορούμε να διαβάζουμε αν επέστρεψε JSON
-                await fetch(APP_URL, { 
+                // Fetch χωρίς no-cors
+                const response = await fetch(APP_URL, { 
                     method: 'POST', 
                     body: JSON.stringify(payload) 
                 });
+                
+                const result = await response.json();
+                
+                if (result.status === 'error') {
+                    if (result.message === 'missing_fields') {
+                        alert("❌ Αποτυχία. Το ΑΦΜ και ο Φαρμακευτικός Σύλλογος είναι υποχρεωτικά πεδία.");
+                    } else {
+                        alert("❌ Σφάλμα: " + result.message);
+                    }
+                    btn.disabled = false; 
+                    btn.innerHTML = oldT; 
+                    return;
+                }
+
                 alert("✅ Τα στοιχεία σας αποθηκεύτηκαν επιτυχώς!");
                 location.reload(); 
             } catch(e) { 
@@ -511,7 +525,7 @@
                 const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 
                 if (!regex.test(email)) { alert("❌ Παρακαλώ εισάγετε ένα έγκυρο Email!"); return; }
-                if (!afm) { alert("❌ Το ΑΦΜ είναι υποχρεωτικό!"); return; }
+                if (!afm) { alert("❌ Το ΑΦΜ είναι υποχρεωτικό πεδίο!"); return; }
                 if (!assoc) { alert("⚠️ Παρακαλώ επιλέξτε Φαρμακευτικό Σύλλογο!"); return; }
                 if (!document.getElementById('gdprConsent').checked) { alert("⚠️ Πρέπει να αποδεχτείτε την επεξεργασία δεδομένων (GDPR)."); return; }
             }
@@ -546,7 +560,7 @@
                 p.qrcode = document.getElementById('qrcode').value.trim();
             }
 
-            // 3. Επικοινωνία με τον Server (Αφαιρέθηκε το no-cors για να διαβάζουμε τα σφάλματα)
+            // 3. Επικοινωνία με τον Server (Αφαιρέθηκε το no-cors)
             try {
                 const response = await fetch(APP_URL, { 
                     method: 'POST', 
@@ -555,23 +569,26 @@
                 
                 const result = await response.json();
 
-                // Διαχείριση Σφαλμάτων από το Backend
+                // -- ΔΙΑΧΕΙΡΙΣΗ ΝΕΩΝ ΑΥΣΤΗΡΩΝ ΣΦΑΛΜΑΤΩΝ --
                 if (result.status === 'error') {
-                    if (result.message === 'not_registered') {
-                        alert("❌ Το email δεν ανήκει σε εγγεγραμμένο μέλος. Παρακαλώ κάντε εγγραφή πρώτα.");
+                    if (result.message === 'missing_fields') {
+                        alert("❌ Αποτυχία. Το ΑΦΜ και ο Φαρμακευτικός Σύλλογος είναι υποχρεωτικά πεδία.");
+                    } else if (result.message === 'not_registered') {
+                        alert("❌ Σφάλμα: Το email αυτό ΔΕΝ ανήκει σε εγγεγραμμένο μέλος. Κάντε εγγραφή πρώτα!");
+                    } else if (result.message === 'incomplete_profile') {
+                        alert("❌ Σφάλμα: Τα στοιχεία σας είναι ελλιπή (λείπει ΑΦΜ ή Σύλλογος). Πηγαίνετε στο 'Προφίλ μου' για να τα διορθώσετε πριν υποβάλετε αίτημα.");
                     } else if (result.message === 'duplicate_email') {
                         alert("⚠️ Αυτό το Email έχει ήδη εγγραφεί. Μεταβείτε στο 'Προφίλ' για τυχόν αλλαγές.");
                     } else if (result.message === 'pending') {
-                        alert("⚠️ Το αίτημα είναι σε εκκρεμότητα! Μπορείτε να προσθέσετε αποδεικτικό ΜΟΝΟ αφού γίνει αποδεκτό από συνάδελφο.");
+                        alert("⚠️ Προσοχή! Το αίτημα είναι σε εκκρεμότητα. Μπορείτε να προσθέσετε αποδεικτικό Tracking ΜΟΝΟ αφού γίνει αποδεκτό από κάποιον συνάδελφο.");
                     } else if (result.message === 'not_found') {
-                        alert("❌ Ο κωδικός αιτήματος δεν βρέθηκε. Ελέγξτε την πληκτρολόγηση (π.χ. REQ-12345 ή OFF-12345).");
+                        alert("❌ Ο κωδικός δεν βρέθηκε. Ελέγξτε την πληκτρολόγηση (π.χ. REQ-12345 ή OFF-12345).");
                     } else {
                         alert("❌ Σφάλμα: " + result.message);
                     }
-                    return; // Σταματάει εδώ, δεν καθαρίζει τα πεδία
+                    return; 
                 }
 
-                // Αν όλα πήγαν καλά:
                 alert("✅ Η ενέργεια ολοκληρώθηκε επιτυχώς!");
                 
                 if (type === 'register') {
