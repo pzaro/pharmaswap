@@ -58,10 +58,10 @@
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Σταθερό</label><input type="tel" id="phone" class="w-full border-2 p-3 rounded-xl bg-gray-50 outline-none focus:border-blue-500"></div>
                 
                 <div class="md:col-span-2 p-5 bg-blue-50 rounded-2xl border-2 border-blue-100 mt-4">
-                    <label class="flex items-start gap-3 cursor-pointer mb-3"><input type="checkbox" id="gdprConsent" class="w-5 h-5 accent-blue-700"><span class="text-xs font-bold text-blue-900">Έχω διαβάσει και αποδέχομαι την επεξεργασία των δεδομένων μου (GDPR) και τους <a href="#" onclick="showSection('terms')" class="underline">Όρους Χρήσης</a>.</span></label>
+                    <label class="flex items-start gap-3 cursor-pointer mb-3"><input type="checkbox" id="gdprConsent" class="w-5 h-5 accent-blue-700"><span class="text-xs font-bold text-blue-900">Έχω διαβάσει και αποδέχομαι την επεξεργασία των δεδομένων μου (GDPR) και τους <a href="#" onclick="loadTerms(); return false;" class="underline">Όρους Χρήσης</a>.</span></label>
                     <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" id="promoConsent" class="w-5 h-5 accent-blue-700"><span class="text-xs text-blue-800">Συναινώ στην αποστολή επιστημονικού/εκπαιδευτικού υλικού από την Zarkolia Health.</span></label>
                 </div>
-                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-black shadow-lg mt-2">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
+                <button type="button" onclick="handleAction('register', this)" class="md:col-span-2 bg-blue-900 text-white py-4 rounded-xl font-black shadow-lg mt-2 uppercase tracking-widest">ΟΛΟΚΛΗΡΩΣΗ ΕΓΓΡΑΦΗΣ</button>
             </form>
         </section>
 
@@ -146,25 +146,8 @@
         </section>
 
         <section id="terms" class="section-content hidden bg-white p-10 rounded-3xl shadow-sm border text-sm leading-relaxed text-gray-700">
-            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-balance-scale mr-2"></i>Όροι Χρήσης & Αποποίηση Ευθυνών</h2>
-            <div class="space-y-4 mb-10">
-                <p><b>Αποκλειστικός Ρόλος Διαμεσολαβητή:</b> Η πλατφόρμα <b>MediX – PharmaSwap Network</b> αποτελεί αποκλειστικά ένα δωρεάν ψηφιακό εργαλείο διασύνδεσης και διευκόλυνσης της επικοινωνίας μεταξύ νόμιμα αδειοδοτημένων φαρμακείων εντός της Ελληνικής Επικράτειας. Το MediX και ο δημιουργός του, Παναγιώτης Ζαρογουλίδης, σε καμία περίπτωση δεν αγοράζουν, δεν πωλούν, δεν διανέμουν, δεν αποθηκεύουν και δεν εμπορεύονται φαρμακευτικά σκευάσματα ή άλλα προϊόντα υγείας.</p>
-                <p><b>Αποκλειστική Ευθύνη Συναλλασσόμενων Φαρμακείων:</b> Κάθε συναλλαγή, οικονομικός διακανονισμός, αποστολή, παραλαβή και τιμολόγηση προϊόντων που προκύπτει μέσα από τη χρήση της πλατφόρμας, εκτελείται αποκλειστικά μεταξύ των εμπλεκόμενων φαρμακείων. Τα συμβαλλόμενα μέρη φέρουν την απόλυτη και ακέραιη ευθύνη για τη συμμόρφωσή τους με την ισχύουσα φαρμακευτική νομοθεσία, τις οδηγίες του Εθνικού Οργανισμού Φαρμάκων (ΕΟΦ) και τους κανόνες δεοντολογίας.</p>
-                <p><b>Ποιότητα και Γνησιότητα Σκευασμάτων:</b> Η πλατφόρμα δεν έχει τη δυνατότητα και δεν αναλαμβάνει την υποχρέωση ελέγχου της γνησιότητας, της ποιότητας, της ημερομηνίας λήξης, της ακεραιότητας της συσκευασίας ή της ορθής συντήρησης (π.χ. τήρηση αλυσίδας ψύχους) των δηλωθέντων φαρμάκων. Η ευθύνη για τον έλεγχο των εν λόγω παραμέτρων κατά την παραλαβή του προϊόντος βαρύνει αποκλειστικά τον παραλαμβάνοντα φαρμακοποιό.</p>
-                <p><b>Απουσία Τεχνικών Εγγυήσεων:</b> Η υπηρεσία του MediX παρέχεται «ως έχει» (As Is). Ο δημιουργός δεν φέρει καμία νομική ή οικονομική ευθύνη για ενδεχόμενα τεχνικά προβλήματα, καθυστερήσεις στις ειδοποιήσεις, προσωρινή μη διαθεσιμότητα του συστήματος, απώλεια δεδομένων ή λανθασμένες καταχωρήσεις αποθεμάτων από τους χρήστες.</p>
-            </div>
-
-            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-shield-alt mr-2"></i>Πολιτική Προστασίας Προσωπικών Δεδομένων (GDPR)</h2>
-            <div class="space-y-4 mb-10">
-                <p><b>Συλλογή και Σκοπός Επεξεργασίας:</b> Η πλατφόρμα <b>MediX</b> συλλέγει και επεξεργάζεται τα απολύτως απαραίτητα στοιχεία που καταχωρούνται οικειοθελώς από τα μέλη κατά την εγγραφή τους (Επωνυμία, ΑΦΜ, ΓΕΜΗ, ΑΜ ΤΣΑΥ, Email, Διεύθυνση και Τηλέφωνα επικοινωνίας). Μοναδικός σκοπός της συλλογής αυτών των δεδομένων είναι η αυστηρή ταυτοποίηση των επαγγελματιών υγείας, η ασφαλής λειτουργία του δικτύου και η διευκόλυνση της μεταξύ τους επικοινωνίας για την αντιμετώπιση των ελλείψεων φαρμάκων, σε απόλυτη εναρμόνιση με τον Γενικό Κανονισμό για την Προστασία Δεδομένων (ΕΕ) 2016/679 (GDPR).</p>
-                <p><b>Κοινοποίηση και Προστασία Δεδομένων:</b> Τα προσωπικά και επαγγελματικά σας δεδομένα δεν πωλούνται, δεν ενοικιάζονται και δεν παραχωρούνται σε τρίτους για κανέναν εμπορικό ή διαφημιστικό σκοπό. Τα στοιχεία επικοινωνίας σας (Ονοματεπώνυμο Υπευθύνου, Τηλέφωνο και Email) κοινοποιούνται αυτόματα <b>αποκλειστικά και μόνο</b> στον συγκεκριμένο συνάδελφο με τον οποίο επιλέγετε να συνδεθείτε για την ολοκλήρωση ενός ενεργού αιτήματος ανταλλαγής.</p>
-                <p><b>Εμπιστευτικότητα Μεταξύ Χρηστών:</b> Τα μέλη του MediX δεσμεύονται να χρησιμοποιούν τα στοιχεία επικοινωνίας που λαμβάνουν από συναδέλφους μέσω της πλατφόρμας αυστηρά και μόνο για την ολοκλήρωση της εκάστοτε συνεννόησης. Απαγορεύεται ρητά η χρήση αυτών των στοιχείων για οποιονδήποτε άλλο σκοπό (π.χ. αποστολή ανεπιθύμητης αλληλογραφίας/spam, διαφήμιση).</p>
-            </div>
-
-            <h2 class="text-2xl font-black mb-6 text-blue-900 border-b pb-3"><i class="fas fa-envelope-open-text mr-2"></i>Συναίνεση Αποστολής Επιστημονικού Υλικού – Zarkolia Health</h2>
-            <div class="space-y-4">
-                <p><b>Ενημέρωση και Εκπαίδευση:</b> Στο πλαίσιο της συνεχούς επιστημονικής ενημέρωσης των επαγγελματιών υγείας, παρέχεται η δυνατότητα στα εγγεγραμμένα μέλη του MediX να λαμβάνουν ενημερωτικά μηνύματα (email) με επιστημονικό, εκπαιδευτικό και ερευνητικό υλικό, καθώς και νέα του κλάδου, από την <b>"Zarkolia Health"</b> υπό την επιστημονική επιμέλεια και ευθύνη του φαρμακοποιού Παναγιώτη Ζαρογουλίδη.</p>
-                <p><b>Προαιρετικός Χαρακτήρας και Ανάκληση:</b> Η συναίνεση για τη λήψη του συγκεκριμένου επιστημονικού υλικού είναι απολύτως προαιρετική (opt-in) και δεν αποτελεί προϋπόθεση για την εγγραφή ή την πλήρη χρήση της πλατφόρμας MediX. Κάθε χρήστης διατηρεί το δικαίωμα να ανακαλέσει τη συναίνεσή του οποιαδήποτε στιγμή.</p>
+            <div id="termsContainer">
+                <p class="text-center text-blue-900 font-bold animate-pulse">⏳ Φόρτωση όρων χρήσης...</p>
             </div>
         </section>
 
@@ -172,15 +155,15 @@
 
     <footer class="mt-auto border-t p-6 text-center bg-white">
         <p class="text-[10px] text-gray-500 font-bold">&copy; 2026 MediX. Πρωτοβουλία: Παναγιώτης Ζαρογουλίδης.</p>
-        <button onclick="showSection('terms')" class="text-blue-600 text-[10px] underline mt-1 font-bold">Όροι Χρήσης & GDPR</button>
+        <button onclick="loadTerms()" class="text-blue-600 text-[10px] underline mt-1 font-bold">Όροι Χρήσης & GDPR</button>
     </footer>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbyP6BlEGTj9TB9cKE6C01N_PRviPYN6llkkSsKhVc40qsr4hzEpNsURnqPwaH8BGjtr/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbzdL6DEMcSzOYbmRVuONrY0RpZ1TTPGRRskja4lqiZMCoqKLFBCODU0NqB4_PvqRomu/exec";
         
         let drugsDatabase = [];
         let selectedDrug = null;
-        let requestCart = []; // Η ΛΙΣΤΑ ΜΕ ΤΑ ΦΑΡΜΑΚΑ ΓΙΑ ΤΟ ΚΑΛΑΘΙ
+        let requestCart = []; 
 
         window.addEventListener('DOMContentLoaded', async () => {
             try {
@@ -193,6 +176,21 @@
             document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
             window.scrollTo(0,0);
+        }
+
+        // --- ΣΥΝΑΡΤΗΣΗ ΑΝΑΚΛΗΣΗΣ ΟΡΩΝ ΧΡΗΣΗΣ ---
+        async function loadTerms() {
+            showSection('terms');
+            const container = document.getElementById('termsContainer');
+            if (container.innerHTML.includes('fa-balance-scale')) return;
+
+            try {
+                const response = await fetch('terms.html');
+                if (!response.ok) throw new Error("File not found");
+                container.innerHTML = await response.text();
+            } catch (error) {
+                container.innerHTML = `<div class="text-center p-10"><p class="text-red-500 font-bold text-lg mb-2">❌ Αδυναμία φόρτωσης.</p><p class="text-gray-500">Προέκυψε σφάλμα κατά την ανάκτηση των όρων.</p></div>`;
+            }
         }
 
         // --- ΣΥΝΑΡΤΗΣΕΙΣ ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΦΑΡΜΑΚΩΝ ---
@@ -254,10 +252,8 @@
         function renderCart() {
             const area = document.getElementById('cartArea');
             const items = document.getElementById('cartItems');
-            if (requestCart.length === 0) {
-                area.classList.add('hidden');
-                return;
-            }
+            if (requestCart.length === 0) { area.classList.add('hidden'); return; }
+            
             area.classList.remove('hidden');
             items.innerHTML = requestCart.map((item, index) => `
                 <div class="flex justify-between items-center bg-green-50 p-3 rounded-xl border border-green-100">
@@ -267,10 +263,7 @@
             `).join('');
         }
 
-        function removeFromCart(index) {
-            requestCart.splice(index, 1);
-            renderCart();
-        }
+        function removeFromCart(index) { requestCart.splice(index, 1); renderCart(); }
 
         // --- ΣΥΝΑΡΤΗΣΕΙΣ ΠΡΟΦΙΛ ---
         async function loadProfile() {
@@ -328,11 +321,7 @@
                 await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
                 alert("✅ Τα στοιχεία σας αποθηκεύτηκαν επιτυχώς!");
                 location.reload(); 
-            } catch(e) { 
-                alert("❌ Σφάλμα κατά την αποθήκευση."); 
-                btn.disabled = false; 
-                btn.innerText = oldT; 
-            }
+            } catch(e) { alert("❌ Σφάλμα κατά την αποθήκευση."); btn.disabled = false; btn.innerText = oldT; }
         }
 
         // --- ΙΣΤΟΡΙΚΟ ---
@@ -370,9 +359,7 @@
                 if (requestCart.length === 0) { alert("⚠️ Η λίστα φαρμάκων είναι κενή."); return; }
             }
 
-            if (type === 'tracking' && !document.getElementById('trackReqId').value.trim()) {
-                alert("⚠️ Συμπληρώστε το ID αιτήματος."); return;
-            }
+            if (type === 'tracking' && !document.getElementById('trackReqId').value.trim()) { alert("⚠️ Συμπληρώστε το ID αιτήματος."); return; }
 
             const oldT = btn.innerText; btn.innerText = "⏳ Παρακαλώ περιμένετε..."; btn.disabled = true;
             let p = { action: type };
@@ -394,10 +381,7 @@
                 alert("✅ Η ενέργεια ολοκληρώθηκε επιτυχώς!");
                 
                 if (type === 'register') showSection('request');
-                else if (type === 'request') {
-                    requestCart = [];
-                    renderCart();
-                }
+                else if (type === 'request') { requestCart = []; renderCart(); }
             } catch(err) { alert("❌ Προέκυψε σφάλμα επικοινωνίας."); }
             finally { btn.innerText = oldT; btn.disabled = false; }
         }
