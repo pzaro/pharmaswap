@@ -45,7 +45,7 @@
             <h2 class="text-2xl font-bold mb-6 text-blue-900 border-b pb-4"><i class="fas fa-user-plus mr-2"></i>Εγγραφή Φαρμακείου</h2>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2"><label class="text-[10px] font-bold text-gray-400 uppercase">Επωνυμία Φαρμακείου</label><input type="text" id="name" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
-                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
+                <div><label class="text-[10px] font-bold text-gray-400 uppercase">ΑΦΜ (Υποχρεωτικό)</label><input type="text" id="afm" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
                 <div><label class="text-[10px] font-bold text-gray-400 uppercase">Email Επικοινωνίας</label><input type="email" id="email" class="w-full border-2 p-3 rounded-xl outline-none focus:border-blue-500 bg-gray-50"></div>
                 
                 <div class="md:col-span-2 bg-blue-50 p-5 rounded-2xl border-2 border-blue-100 mt-2 mb-2">
@@ -179,7 +179,7 @@
 
         <section id="tracking" class="section-content hidden bg-white p-8 rounded-3xl shadow-sm border text-center">
             <h2 class="text-2xl font-bold mb-6 text-blue-700 border-b pb-4"><i class="fas fa-truck mr-2"></i>Tracking & Αποδεικτικά</h2>
-            <p class="text-sm text-gray-500 mb-6">Καταχωρήστε το αποδεικτικό αποστολής για πλήρη ιχνηλασιμότητα.</p>
+            <p class="text-sm text-gray-500 mb-6">Καταχωρήστε το αποδεικτικό αποστολής για πλήρη ιχνηλασιμότητα (Μόνο για αιτήματα που έχουν απαντηθεί).</p>
             <input type="text" id="trackReqId" placeholder="ID Αιτήματος (π.χ. REQ-12345 ή OFF-12345)" class="w-full border-2 p-4 rounded-xl mb-4 text-center font-bold outline-none focus:border-blue-500 bg-gray-50">
             <input type="text" id="qrcode" placeholder="Serial Number (QR) ή Voucher Courier" class="w-full border-2 p-4 rounded-xl mb-6 text-center outline-none focus:border-blue-500 bg-gray-50">
             <button type="button" onclick="handleAction('tracking', this)" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-5 rounded-xl font-black shadow-lg uppercase tracking-widest transition text-lg">ΚΑΤΑΧΩΡΗΣΗ</button>
@@ -200,7 +200,7 @@
 
     <script>
         // === ΤΟ ΝΕΟ ΣΟΥ URL ===
-        const APP_URL = "https://script.google.com/macros/s/AKfycbw0Yqk1XmHD9GUDSBfhbmDBNeCq4FnidmxuvfuRI6Nwgov-7Dvs9DnVREzJ2W0OQ895/exec";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbylL3Bo1w4hn-Sn2hAoPnFXifUGYIavWtp2YeLtOZfHlgaajRIlEN3zEsqatyctD-s/exec";
         
         let drugsDatabase = [];
         let activeGroups = [];
@@ -449,7 +449,11 @@
             };
 
             try {
-                await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+                // Χωρίς no-cors για να μπορούμε να διαβάζουμε αν επέστρεψε JSON
+                await fetch(APP_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(payload) 
+                });
                 alert("✅ Τα στοιχεία σας αποθηκεύτηκαν επιτυχώς!");
                 location.reload(); 
             } catch(e) { 
@@ -497,13 +501,18 @@
             } catch(e) { area.innerHTML = "<p class='text-center text-red-500 font-bold'>❌ Σφάλμα σύνδεσης.</p>"; }
         }
 
-        // -- ΒΑΣΙΚΗ ΣΥΝΑΡΤΗΣΗ ΕΠΙΚΟΙΝΩΝΙΑΣ (Register, Request, Tracking) --
+        // -- ΒΑΣΙΚΗ ΣΥΝΑΡΤΗΣΗ ΕΠΙΚΟΙΝΩΝΙΑΣ (ΑΥΣΤΗΡΟΙ ΕΛΕΓΧΟΙ & RESPONSE) --
         async function handleAction(type, btn) {
+            // 1. Προκαταρκτικοί Έλεγχοι Φόρμας
             if (type === 'register') {
                 const email = document.getElementById('email').value.trim();
+                const afm = document.getElementById('afm').value.trim();
+                const assoc = document.getElementById('association').value;
                 const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
                 if (!regex.test(email)) { alert("❌ Παρακαλώ εισάγετε ένα έγκυρο Email!"); return; }
-                if (!document.getElementById('association').value) { alert("⚠️ Παρακαλώ επιλέξτε Φαρμακευτικό Σύλλογο!"); return; }
+                if (!afm) { alert("❌ Το ΑΦΜ είναι υποχρεωτικό!"); return; }
+                if (!assoc) { alert("⚠️ Παρακαλώ επιλέξτε Φαρμακευτικό Σύλλογο!"); return; }
                 if (!document.getElementById('gdprConsent').checked) { alert("⚠️ Πρέπει να αποδεχτείτε την επεξεργασία δεδομένων (GDPR)."); return; }
             }
 
@@ -519,6 +528,7 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Επεξεργασία...'; 
             btn.disabled = true;
             
+            // 2. Συγκέντρωση Δεδομένων
             let p = { action: type };
             
             if (type === 'register') {
@@ -536,8 +546,32 @@
                 p.qrcode = document.getElementById('qrcode').value.trim();
             }
 
+            // 3. Επικοινωνία με τον Server (Αφαιρέθηκε το no-cors για να διαβάζουμε τα σφάλματα)
             try {
-                await fetch(APP_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(p) });
+                const response = await fetch(APP_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(p) 
+                });
+                
+                const result = await response.json();
+
+                // Διαχείριση Σφαλμάτων από το Backend
+                if (result.status === 'error') {
+                    if (result.message === 'not_registered') {
+                        alert("❌ Το email δεν ανήκει σε εγγεγραμμένο μέλος. Παρακαλώ κάντε εγγραφή πρώτα.");
+                    } else if (result.message === 'duplicate_email') {
+                        alert("⚠️ Αυτό το Email έχει ήδη εγγραφεί. Μεταβείτε στο 'Προφίλ' για τυχόν αλλαγές.");
+                    } else if (result.message === 'pending') {
+                        alert("⚠️ Το αίτημα είναι σε εκκρεμότητα! Μπορείτε να προσθέσετε αποδεικτικό ΜΟΝΟ αφού γίνει αποδεκτό από συνάδελφο.");
+                    } else if (result.message === 'not_found') {
+                        alert("❌ Ο κωδικός αιτήματος δεν βρέθηκε. Ελέγξτε την πληκτρολόγηση (π.χ. REQ-12345 ή OFF-12345).");
+                    } else {
+                        alert("❌ Σφάλμα: " + result.message);
+                    }
+                    return; // Σταματάει εδώ, δεν καθαρίζει τα πεδία
+                }
+
+                // Αν όλα πήγαν καλά:
                 alert("✅ Η ενέργεια ολοκληρώθηκε επιτυχώς!");
                 
                 if (type === 'register') {
@@ -552,7 +586,7 @@
                     document.getElementById('qrcode').value = '';
                 }
             } catch(err) { 
-                alert("❌ Προέκυψε σφάλμα επικοινωνίας."); 
+                alert("❌ Προέκυψε σφάλμα επικοινωνίας με το διακομιστή."); 
             } finally { 
                 btn.innerHTML = oldHtml; 
                 btn.disabled = false; 
